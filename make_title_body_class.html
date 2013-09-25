@@ -1,0 +1,30 @@
+<html>
+<head>	<title>This is a title - website</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script>
+$(function(){
+       title = $('title').text();
+        pipe = title.indexOf('|');
+        dash = title.indexOf('-');
+        function fix(n){ $('body').addClass(title.slice(0,n).replace(/ /g,'-')) };
+                if(pipe>1){ 
+                        if( title.charAt(pipe-1)==' '){fix(pipe-1)}
+                        else{fix(pipe)}
+                        }
+                else if (dash>1){
+                        if( title.charAt(dash-1)==' '){fix(dash-1)}
+                        else{fix(dash)};
+                        }
+                else{ $('body').addClass(title.replace(/ /g,'-'))}
+});
+</script>
+</head>        
+<body>
+        <div>
+                <h2>Title</h2>
+                <p>content goes here </p>
+        </div>
+</body>
+
+
+</html>
