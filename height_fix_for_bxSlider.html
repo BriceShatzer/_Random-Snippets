@@ -24,8 +24,14 @@ $(document).ready(function(){
         });
 
 function bgExpander(){
-    $('#container, .bx-viewport').height($(document).height())
-}
+    var aside=$('aside').outerHeight();
+  
+    if ($(window).height() > aside)
+        {var maxHeight= $(document).height(); }
+    else  {var maxHeight= aside;}
+     
+    $('#container, .bx-viewport').height(maxHeight)
+
 
     bgExpander();
     $(window).resize(bgExpander);
