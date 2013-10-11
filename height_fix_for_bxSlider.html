@@ -23,9 +23,10 @@ $(document).ready(function(){
         pager: false
         });
 
-    function bgExpander(){
-        $('.bx-viewport').height($(document).height())
-    }
+function bgExpander(){
+    $('#container, .bx-viewport').height($(document).height())
+}
+
     bgExpander();
     $(window).resize(bgExpander);
 
