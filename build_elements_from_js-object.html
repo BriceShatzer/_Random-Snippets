@@ -1,0 +1,57 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<body>
+
+</body>
+<script>
+var obj = {
+"Administration":"65349",
+"Adolescent Program":"63336",
+"Agency Planning":"65351",
+"Billling":"65352",
+"Central Intake":"65353",
+"Community Service":"65354",
+"COPE ":"65355",
+"Family Enrichment":"65356",
+"Fatherhood":"65357",
+"Fatherhood-Family Enrich":"65358",
+"Human Resources":"65359",
+"Integrated Care Program":"65360",
+"Maintenance":"65361",
+"Managed Care":"65363",
+"Men's Recovery Home":"65364",
+"Office Services":"65365",
+"O'Hare Outreach":"65348",
+"Outpatient":"65366",
+"Payroll":"65367",
+"RSP":"65368",
+"Sangamon House":"65369",
+"STAR Program":"65370",
+"Women's Residential":"65371"
+}
+
+$.each(obj, function(val, num) {
+var classname = 'c'+num;
+var $p = $('<p><span class="'+classname+'First"></span><br><span class="'+classname+'Second"></span><br><span class="'+classname+'Third"></span><br><span class="'+classname+'Fourth"></span></p>');
+
+$p.appendTo('body');
+$('.'+classname+'First').text('<div class="department">')
+$('.'+classname+'Second').text('<h3 style="text-align: center;">'+val+'</h3>');
+$('.'+classname+'Third').text('{module_webapps,19784,c,'+num+',,,true,,,}');
+$('.'+classname+'Fourth').text('</div>');
+
+
+});
+/*
+$('
+<div class="department">
+<h3 style="text-align: center;">Health and Wellness</h3>
+{module_webapps,19784,c,63334,,,true,,,}
+</div>
+
+	')*/
+</script>
+
+
+</html>

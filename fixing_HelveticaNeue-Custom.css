@@ -1,0 +1,8 @@
+@font-face { font-family: 'HelveticaNeue'; src: local('Helvetica Neue'); }
+@font-face { font-family: 'HelveticaNeue'; font-weight:bold; src: local('Helvetica Neue'); }
+@font-face { font-family: 'Helvetica Neue'; src: local('helvetica'); }
+@font-face { font-family: 'Helvetica Neue'; font-weight:bold; src: local('Helvetica Neue'); }
+@font-face { font-family: 'helvetica neue'; font-weight:bold; src: local('Helvetica'); }
+
+/* to fix helvetica Neue, add the lines above to:;
+C:\Users\YOURUSERNAME\AppData\Local\Google\Chrome\User Data\Default\User StyleSheets\Custom.css*/
