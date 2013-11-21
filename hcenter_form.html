@@ -1,0 +1,118 @@
+<script>
+if (typeof jQuery === 'undefined') {
+        document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+
+function eventSignup() {
+var $form = $('#catwebformform48727'); // set your form ID
+var $messagebox = $('#message'); // set your message box ID
+var $successmessage = "<h3>Thank You For Your Submission!</h3>"; // replace with your own success message in HTML format
+
+var $errormessage = '<h3 style="color:red">An Error Has Occured - Please Try Again</h3>'; // replace with your own error message in HTML format
+$.ajax({
+	type: 'POST',
+	url: $form.attr('action'),
+	data: $form.serialize(), 
+	success: function (msg) { 
+				var formResponse = eval(msg);
+                console.log(formResponse);
+                        
+		        if (formResponse.FormProcessV2Response.success) {
+						var message = formResponse.FormProcessV2Response.message;
+                        function lockForm() { $('#bookingForm_container input, #bookingForm_container select').attr('disabled', 'disabled');};
+                        function resetForm(){submitcount48727 = 0};
+
+                        //.test(roe.FormProcessV2Response.message)
+                        if( /ERROR: Booking could not be made as this email address is already registered for this booking./.search(message) ){
+                            lockForm();
+
+                        $messagebox.prepend(
+                            '<h2>It appears that you have already registered for this event. </h2>'); 
+
+                        }
+                        else if ( /ERROR/.search(message) ) { 
+                            lockForm();
+                            $messagebox.prepend('<h2 style="color:red"> Sorry, but an error occured while you were attempting to register for this event. </h2>');  }
+                        else{}    
+
+                        $messagebox.append(); 
+						$messagebox.fadeIn();
+                    }
+                 else {
+						$messagebox.append($errormessage); 
+						$messagebox.fadeIn();	
+                        }    
+        		},
+	error: function () {
+                        $messagebox.append($errormessage); 
+                        $messagebox.fadeIn();
+						}
+     });
+}
+</script>
+<div id="message" style="display: none;"></div>
+<div class="booking-container">
+<h1>{tag_name}</h1>
+<p style="display: none;">
+<strong>Date: </strong><span class="date">{tag_date}</span><br />
+<strong>Capacity: </strong><span class="capacity">{tag_capacity}</span> ({tag_percentfull} booked)
+</p>
+{tag_body}
+<div id="bookingForm_container">
+<form name="catwebformform48727" onsubmit="return checkWholeForm48727(this)" action="/FormProcessv2.aspx?WebFormID=10254&amp;OID={module_oid}&amp;OTYPE={module_otype}&amp;EID={module_eid}&amp;CID={module_cid}&amp;JSON=1" method="post" enctype="multipart/form-data" id="catwebformform48727">
+    <div class="form-container">
+    <h2>Booking</h2>
+    <p>&bull; Required</p>
+    <div class="form">
+    <div class="item">
+    <label>Title</label><br />
+    <select class="cat_dropdown_smaller" name="Title">
+    <option value="3395">DR</option>
+    <option value="3393">MISS</option>
+    <option value="3391" selected="selected">MR</option>
+    <option value="3392">MRS</option>
+    <option value="3394">MS</option>
+    </select>
+    </div>
+    <div class="item">
+    <label for="FirstName">First Name</label><br />
+    <input class="cat_textbox" maxlength="255" name="FirstName" id="FirstName" />&nbsp;&bull;
+    </div>
+    <div class="item">
+    <label for="LastName">Last Name</label><br />
+    <input class="cat_textbox" maxlength="255" name="LastName" id="LastName" />&nbsp;&bull;
+    </div>
+    <div class="item">
+    <label for="EmailAddress">Email</label><br />
+    <input class="cat_textbox" maxlength="255" name="EmailAddress" id="EmailAddress" />&nbsp;&bull;
+    </div>
+    <div class="item">
+    <label for="BookingAllocation">Number of Seats</label><br />
+    <input class="cat_textbox" id="BookingAllocation" name="BookingAllocation" />&nbsp;&bull;
+    </div>
+    <div class="item">
+    <input class="cat_button" id="catwebformbutton" type="submit" value="Submit" />
+    </div>
+    </div>
+    <div class="error">{module_error}</div>
+    <script type="text/javascript" src="/CatalystScripts/ValidationFunctions.js"></script>
+    <script type="text/javascript">
+			//<![CDATA[
+			var submitcount48727 = 0;
+            function checkWholeForm48727(theForm){var why = "";
+            if (theForm.FirstName) why += isEmpty(theForm.FirstName.value, "First Name");
+            if (theForm.LastName) why += isEmpty(theForm.LastName.value, "Last Name"); 
+            if (theForm.EmailAddress) why += checkEmail(theForm.EmailAddress.value); 
+            if (theForm.BookingAllocation) why += isNumber(theForm.BookingAllocation.value);
+            if(why != ""){alert(why);return false;}
+            if(submitcount48727 == 0){submitcount48727++;eventSignup();return false;}
+            else{alert("Form submission is in progress.");return false;}}
+			//]]>
+		</script>
+    </div>
+    <!-- END .form-container -->
+</form>
+</div>
+<div class="go-back">{module_referreraddress,,Go Back}</div>
+</div>
+<!-- END .booking-container -->
