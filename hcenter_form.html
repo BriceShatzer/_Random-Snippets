@@ -4,111 +4,251 @@ if (typeof jQuery === 'undefined') {
     }
 
 function eventSignup() {
-var $form = $('#catwebformform48727'); // set your form ID
-var $messagebox = $('#message'); // set your message box ID
-var $successmessage = "<h3>Thank You For Your Submission!</h3>"; // replace with your own success message in HTML format
+var $form = $('#catwebformform48727'); // sets form ID
+var $messagebox = $('#message'); // sets message box ID
+var $bluepayForm= $('#bluepayForm');
+var $successmessage = "<h3>Thank You For Your Submission!</h3>";
+var $modalParts = [$messagebox, $('#page_modal_overlay')];
+var $errormessage = '<h3 style="color:red">An Error Has Occured - Please Try Again</h3>';
+var paymentAmount; 
 
-var $errormessage = '<h3 style="color:red">An Error Has Occured - Please Try Again</h3>'; // replace with your own error message in HTML format
+function lockForm() { $('#bookingForm_container input, #bookingForm_container select').attr('disabled', 'disabled');};
+function resetForm(){submitcount10254 = 0};
+function createModal() {
+    $messagebox.addClass('modal_window');
+    $('body').append('<div id="page_modal_overlay"></div>');
+    $.each($modalParts, function(){ $(this).fadeIn();});
+    $messagebox.css("margin-top", "-"+$messagebox.height()/2+"px");
+};
+function majorError(){
+       $messagebox.prepend('<h2 style="color:red"> We\'re Sorry, but an error occurred while you were attempting to register for this event. </h2><p style="clear:both">Please select one of the options below.</p><div style="width:28%;float:left;"><a href="#" id="tryAgain">Try registering online again</a></div><div style="width:6%;float:left;">or</div><div style="width:28%;float:left;"><a id="rsvpPDF" href="#" target="_blank"> Use the printable RSVP Form to request your tickets by mail.</a></h1></div><div style="width:6%;float:left;">or</div><div style="width:28%;float:left;"><a href="/contact">Get in touch with us directly</a></div> ');
+       createModal()
+}
+function payOnline(){
+    if( $messagebox.is(":visible") ) {$messagebox.fadeOut();}
+    $bluepayForm.fadeIn();
+        //grab previously filled in info
+    $('#BluePay_NAME').val( $('#FirstName').val()+' '+$('#LastName').val());
+    $('#BluePay_PHONE').val($('#HomePhone').val());
+    $('#BluePay_EMAIL').val($('#EmailAddress').val());
+    
+};
+
+//*watch: variable might need to replaced with true jQuery call - $('#message')
+$messagebox
+ .on("click", '#rsvpPDF', function(){ window.open("/annual-award-luncheon_rsvp.pdf"); location.reload();} )
+ .on("click", '#payOnline', function(){ payOnline() });
+ .on("click", '#tryAgain', function(){ location.reload();});
+
+function updateTicketCount(){
+    if(ticketCount<0){ticketCount=0}
+    $('#tickets').text(ticketCount);
+    paymentAmount = ticketCount*250
+    $('#ticketCost').text("Total Cost: $"+paymentAmount);
+    $('#BluePay_AMOUNT').value(paymentAmount);
+    $('#bluepayCostDisplay').text(paymentAmount);
+}
+
+var ticketCount = 1;
+$('#decreaseTickets').click(function(){ticketCount-- updateTicketCount()});
+$('#increaseTickets').click(function(){ticketCount++ updateTicketCount()});
+
+
 $.ajax({
 	type: 'POST',
 	url: $form.attr('action'),
 	data: $form.serialize(), 
 	success: function (msg) { 
-				var formResponse = eval(msg);
+        var formResponse;
+        if( !$.isPlainObject(msg) ){formResponse = $.parseJSON(msg)}
+        else{formResponse = msg}
                 console.log(formResponse);
                         
 		        if (formResponse.FormProcessV2Response.success) {
 						var message = formResponse.FormProcessV2Response.message;
-                        function lockForm() { $('#bookingForm_container input, #bookingForm_container select').attr('disabled', 'disabled');};
-                        function resetForm(){submitcount48727 = 0};
+                        lockForm();
 
-                        //.test(roe.FormProcessV2Response.message)
                         if( /ERROR: Booking could not be made as this email address is already registered for this booking./.search(message) ){
-                            lockForm();
+                            $messagebox.append('<h2>It looks like you have already registered for this event. </h2><p style="clear:both"> Even though you\'ve told us you would like to attend, we still need to finalize your registration in order to reserve your tickets. This can be handled one of three ways</p><div style="width:28%;float:left;"><a href="#" id="payOnline">Submit a credit card payment online</a></div><div style="width:6%;float:left;">or</div><div style="width:28%;float:left;"><a href="#" id="rsvpPDF"> Mail in the printable RSVP Form </a></h1></div><div style="width:6%;float:left;">or</div><div style="width:28%;float:left;"><a href="/contact-us">Get in touch with us</a></div>');
+                            createModal()
+                        }    //yellow light path
 
-                        $messagebox.prepend(
-                            '<h2>It appears that you have already registered for this event. </h2>'); 
-
-                        }
-                        else if ( /ERROR/.search(message) ) { 
-                            lockForm();
-                            $messagebox.prepend('<h2 style="color:red"> Sorry, but an error occured while you were attempting to register for this event. </h2>');  }
-                        else{}    
-
-                        $messagebox.append(); 
-						$messagebox.fadeIn();
-                    }
-                 else {
-						$messagebox.append($errormessage); 
-						$messagebox.fadeIn();	
-                        }    
+                        else if ( /ERROR/.search(message) ) { majorError() }    //red light path
+                       
+                        else{ payOnline() }    //green light path
+                }
+                else { majorError() }    //red light path    
         		},
-	error: function () {
-                        $messagebox.append($errormessage); 
-                        $messagebox.fadeIn();
-						}
+	error: function (msg) { majorError() }    //red light path
      });
 }
 </script>
+
 <div id="message" style="display: none;"></div>
+
+<div id="bluepayForm" style="display:none;"> 
+    <form action="https://secure.bluepay.com/interfaces/bp10emu" method="POST" id="BluePay_paymentForm">
+        <input type="hidden" name="MERCHANT" value="100117000296">
+        <input type="hidden" name="MODE" value="LIVE">
+        <input type="hidden" name="TRANSACTION_TYPE" value="SALE">
+        <input type="hidden" name="TAMPER_PROOF_SEAL" value="fb3b5a1e88993b41402a3f99f914d9f9">
+        <input type="hidden" name="TPS_DEF" value="MERCHANT TRANSACTION_TYPE">
+        <input type="hidden" name="Order_ID" value="UNUSED"> 
+        <input type="hidden" name="APPROVED_URL" value="http://haymarketcenter.businesscatalyst.com/pages/payment-response#approve"> 
+        <input type="hidden" name="DECLINED_URL" value="http://haymarketcenter.businesscatalyst.com/pages/payment-response#decline">
+        <input type="hidden" name="MISSING_URL" value="http://haymarketcenter.businesscatalyst.com/pages/payment-response#error">
+        <input type="hidden" name="COMMENT" value="">
+
+        <input type="hidden" id="BluePay_AMOUNT" name="AMOUNT" value="">
+        <table id="BluePay_paymentForm_inputs" style="float:left;">
+        <tbody>
+            <tr>
+                <td>
+                <label for="BluePay_NAME">Name on Card</label><br>
+                <input type="text" id="BluePay_NAME" name="NAME" value="">
+                </td>
+                <td>
+                <label for="BluePay_Addr1">Billing Address</label><br>
+                <input type="text" id="BluePay_Addr1" name="Addr1" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="BluePay_CITY">City</label><br>    
+                <input type="text" id="BluePay_CITY" name="CITY" value="">
+                </td>
+                <td>
+                    <div style="float:left;">
+                        <label for="BluePay_STATE">State</label><br>    
+                        <input type="text" id="BluePay_STATE" name="STATE" value="">
+                    </div>
+                    <div style="float:left;">
+                        <label for="BluePay_ZIPCODE">Zip</label><br>                
+                        <input type="text" id="BluePay_ZIPCODE" name="ZIPCODE" value="">
+                    </div>
+            </td></tr>
+            <tr><td>
+                <label for="BluePay_PHONE">Phone</label><br>                
+                <input type="text" id="BluePay_PHONE" name="PHONE" value="">
+            </td></tr>
+            <tr><td>
+                 <label for="BluePay_EMAIL">Email</label><br>
+                <input type="text" id="BluePay_EMAIL" name="EMAIL" value="" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+            </td></tr>
+            <tr><td>
+                    <label for="CC_NUM">Card number</label><br>
+                    <input type="text" name="CC_NUM" value=""> 
+                </td>
+                <td></td>
+                <td>
+                    <label for="CC_EXPIRES_MONTH"> Expiration Date</label><br>
+                    <select name="CC_EXPIRES_MONTH">
+                        <option value="" disabled="disabled" selected="selected">--</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select name="CC_EXPIRES_YEAR">
+                        <option value="" disabled="disabled" selected="selected">--</option>
+                        <option value="13">2013</option>
+                        <option value="14">2014</option>
+                        <option value="15">2015</option>
+                        <option value="16">2016</option>
+                        <option value="17">2017</option>
+                        <option value="18">2018</option>
+                        <option value="19">2019</option>
+                        <option value="20">2020</option>
+                        <option value="21">2021</option>
+                        <option value="22">2022</option>
+                        <option value="23">2023</option>
+                        <option value="24">2024</option>
+                        <option value="25">2025</option>
+                    </select>
+            </td></tr>
+            <tr><td>
+                    <label for="CVCCVV2" onclick="window.open('http://en.wikipedia.org/wiki/Card_security_code', '_blank')" style="cursor:help">CVC/CVV2</label><br>    
+                    <input type="text" name="CVCCVV2" value="">
+            </td></tr>
+            <tr><td><p id="ticketCost" style="font:20px !important">Payment Ammount: &nbsp;&nbsp;$<span id="bluepayCostDisplay"></span></p></td></tr>
+        <tr style="display:none;"><td><input type="text" id="BluePay_Addr2" name="Addr2"></td></tr>
+        <tr style="display:none;"><td><input type="SUBMIT" value="" name="SUBMIT"></td></tr>
+        </tbody>
+        </table>
+    </form>
+</div>
+
 <div class="booking-container">
-<h1>{tag_name}</h1>
-<p style="display: none;">
-<strong>Date: </strong><span class="date">{tag_date}</span><br />
-<strong>Capacity: </strong><span class="capacity">{tag_capacity}</span> ({tag_percentfull} booked)
-</p>
-{tag_body}
+<h1> Online Registration </h1> 
 <div id="bookingForm_container">
-<form name="catwebformform48727" onsubmit="return checkWholeForm48727(this)" action="/FormProcessv2.aspx?WebFormID=10254&amp;OID={module_oid}&amp;OTYPE={module_otype}&amp;EID={module_eid}&amp;CID={module_cid}&amp;JSON=1" method="post" enctype="multipart/form-data" id="catwebformform48727">
+<form name="catwebformform48727" onsubmit="return checkWholeForm48727(this)" action="/FormProcessv2.aspx?WebFormID=10254&amp;OID=18800&amp;OTYPE=61&amp;EID=0&amp;CID=0&amp;JSON=1" method="post" enctype="multipart/form-data" id="catwebformform48727">
     <div class="form-container">
-    <h2>Booking</h2>
-    <p>&bull; Required</p>
-    <div class="form">
-    <div class="item">
-    <label>Title</label><br />
-    <select class="cat_dropdown_smaller" name="Title">
-    <option value="3395">DR</option>
-    <option value="3393">MISS</option>
-    <option value="3391" selected="selected">MR</option>
-    <option value="3392">MRS</option>
-    <option value="3394">MS</option>
-    </select>
-    </div>
-    <div class="item">
-    <label for="FirstName">First Name</label><br />
-    <input class="cat_textbox" maxlength="255" name="FirstName" id="FirstName" />&nbsp;&bull;
-    </div>
-    <div class="item">
-    <label for="LastName">Last Name</label><br />
-    <input class="cat_textbox" maxlength="255" name="LastName" id="LastName" />&nbsp;&bull;
-    </div>
-    <div class="item">
-    <label for="EmailAddress">Email</label><br />
-    <input class="cat_textbox" maxlength="255" name="EmailAddress" id="EmailAddress" />&nbsp;&bull;
-    </div>
-    <div class="item">
-    <label for="BookingAllocation">Number of Seats</label><br />
-    <input class="cat_textbox" id="BookingAllocation" name="BookingAllocation" />&nbsp;&bull;
-    </div>
-    <div class="item">
-    <input class="cat_button" id="catwebformbutton" type="submit" value="Submit" />
-    </div>
-    </div>
-    <div class="error">{module_error}</div>
-    <script type="text/javascript" src="/CatalystScripts/ValidationFunctions.js"></script>
-    <script type="text/javascript">
-			//<![CDATA[
-			var submitcount48727 = 0;
-            function checkWholeForm48727(theForm){var why = "";
+        <p>&bull; Required</p>
+        <div class="form">
+            <div class="item">
+            <label>Title</label><br />
+            <select class="cat_dropdown_smaller" name="Title">
+            <option value="3395">DR</option>
+            <option value="3393">MISS</option>
+            <option value="3391" selected="selected">MR</option>
+            <option value="3392">MRS</option>
+            <option value="3394">MS</option>
+            </select>
+            </div>
+            <div class="item">
+            <label for="FirstName">First Name</label><br />
+            <input class="cat_textbox" maxlength="255" name="FirstName" id="FirstName" />&nbsp;&bull;
+            </div>
+            <div class="item">
+            <label for="LastName">Last Name</label><br />
+            <input class="cat_textbox" maxlength="255" name="LastName" id="LastName" />&nbsp;&bull;
+            </div>
+            <div class="item">
+            <label for="EmailAddress">Email</label><br />
+            <input class="cat_textbox" maxlength="255" name="EmailAddress" id="EmailAddress" />&nbsp;&bull;
+            </div>
+            <div class="item">
+            <label for="BookingAllocation">Number of Seats</label><br />
+            <span id="decreaseTickets">-</span><span id="tickets">1</span><span id="increaseTickets">+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="ticketCost"> Total Cost: $250</span>
+
+            <input style="display:none;" class="cat_textbox" id="BookingAllocation" name="BookingAllocation" value="1"/>&nbsp;&bull;
+            </div>
+            <div class="item">
+            <input class="cat_button" id="catwebformbutton" type="submit" value="Submit" />
+            </div>
+        </div>
+        <div class="error">{module_error}</div>
+        <script type="text/javascript" src="/CatalystScripts/ValidationFunctions.js"></script>
+        <script type="text/javascript">
+        //<![CDATA[
+        var submitcount48727 = 0;
+        function checkWholeForm48727(theForm){var why = "";
             if (theForm.FirstName) why += isEmpty(theForm.FirstName.value, "First Name");
+            if (!/^[a-zA-Z ]+$/.test(theForm.FirstName.value)) why += "- First Name must only contain letters\n";
             if (theForm.LastName) why += isEmpty(theForm.LastName.value, "Last Name"); 
+            if (!/^[a-zA-Z ]+$/.test(theForm.LastName.value)) why += "- Last Name must only contain letters\n";
             if (theForm.EmailAddress) why += checkEmail(theForm.EmailAddress.value); 
-            if (theForm.BookingAllocation) why += isNumber(theForm.BookingAllocation.value);
+            if (theForm.BookingAllocation) why += isCurrency(theForm.BookingAllocation.value, "Number of Tickets");
             if(why != ""){alert(why);return false;}
-            if(submitcount48727 == 0){submitcount48727++;eventSignup();return false;}
-            else{alert("Form submission is in progress.");return false;}}
-			//]]>
-		</script>
+            if(submitcount48727 == 0){submitcount48727++;
+                eventSignup();
+                return false;
+            }
+            else{
+                alert("Form submission is in progress.");
+                return false;
+            }
+        }
+        //]]>
+        </script>
     </div>
     <!-- END .form-container -->
 </form>

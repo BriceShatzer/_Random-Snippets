@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Support</title>
+        <style>
+.support_button-holder{float:left;width: 425px;margin: 20px}
+.support_button {
+  display: table;
+  cursor: pointer;
+  border: 0px;
+  -webkit-border-radius: 15;
+  -moz-border-radius: 15;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 1px 1px #666666;
+  -moz-box-shadow: 1px 1px 1px #666666;
+  box-shadow: 1px 1px 1px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #0C5486;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.support_button:hover {
+  background: #0A4A77;
+  text-decoration: none;
+}
+.support_button *{color:#fff;}
+.support_button p{
+  display: table-cell;
+  font-size: 16px;
+  vertical-align: middle;
+  width: 100%;
+  }
+.support_button img{float:left; height: 80px}
+.support_button a{display: none;width: 100%; text-align: center; }
+.support_button a:hover{color:#fff;}        
+        </style>
+    </head>
+    <body>
+    <div class="support_button-holder">
+        <div class="support_button"><img alt="" src="/images/ticket_icon.png" />
+        <p><strong>Start a Support Ticket</strong><br />
+        We are here to support you. Click here to start a Ticket.
+        <a href="/support-ticket">Click Here</a></p>
+        </div>
+    </div>
+    <div class="support_button-holder">
+        <div class="support_button"><img alt="" src="/images/req_icon.png" />
+        <p><strong>Technical Requirements</strong><br />
+        Learn about our platform by reviewing our technical requirements
+        <a href="/technical-requirements">Click Here</a></p>        
+        </div>
+    </div>
+    <div class="support_button-holder">
+        <div class="support_button"><img alt="" src="/images/version_icon.png" />
+        <p><strong>Version Releases</strong><br />
+        Compare the different versions that are currently in the wild
+        <a href="/Releases">Click Here</a></p>
+        </div>
+    </div>
+    <div class="support_button-holder">
+        <div class="support_button"><img alt="" src="/images/help_icon.png" />
+        <p><strong>Help and Documentation</strong><br />
+        Coming soon...
+        <a href="/help-and-documentation">Click Here</a></p> 
+        </div>
+    </div>
+    <script type="text/javascript">
+    if(!window.jQuery) {
+var bob = [];
+function showNavText(matchClass)
+    {
+    var elems = document.getElementsByTagName('*'),i;
+    for (i in elems)
+        {
+        if((" "+elems[i].className+" ").indexOf(" "+matchClass+" ") > -1)
+            {
+            var fix = elems[i].innerHTML.replace('>Click Here</A>', ' style="display:block !important">Click Here</A>'); 
+            elems[i].innerHTML = fix;
+            }
+        }
+    }
+showNavText('support_button');    
+}
+$(document).ready(function() {
+       $(".support_button").click(function(){ 
+            window.location=$(this).find("a").attr("href");
+            return false;
+        });        
+    });
+
+    </script>
+    </body>
+</html>
