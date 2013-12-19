@@ -12,6 +12,13 @@
     margin-top: 15px;
     overflow: hidden;
 }
+.staffBio, .staffBio *{
+    -webkit-transition:all .5s ease-out;
+    -moz-transition:all .5s ease-out;
+    -o-transition:all .5s ease-out;
+    -ms-transition:all .5s ease-out;
+    transition:all .5s ease-out;  
+}
 .staffBio div.headshot{
     border-radius: 4px;
     background-color: #fff;
@@ -32,12 +39,20 @@
 .staffBio div.label{
     background-color: #003054;
     bottom:0px;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    filter: alpha(opacity=90);
     opacity: .9;
     position:absolute;
     padding: 5px;
     width: 100%;
+    -webkit-transition: background-color .1s linear;
+    -moz-transition: background-color .1s linear;
+    -o-transition: background-color .1s linear;
+    -ms-transition: background-color .1s linear;
+    transition: background-color .1s linear;
 }
 .staffBio div.label span.contactInfo{display: none;}
+span.title ,span.contactInfo{white-space: nowrap;}
 .staffBio h4{color:#fff;margin: 0px;}
 .staffBio p{display: none;}
 
@@ -45,11 +60,12 @@
 active state styling
 -----*/
 .staffBio div.headshot.active{
+    color:#5a5a5a;  
     max-height:100%;
     max-width:100%;
     padding:15px;
     overflow: hidden;
-    color:#5a5a5a;  
+    width: 100%;
 }
 .staffBio div.headshot.active img{
     float:left;
@@ -66,50 +82,81 @@ active state styling
     float: left;
 }
 .staffBio div.headshot.active span{
-    margin-left: 15px;
     display:inline;
 }
 .staffBio div.headshot.active span.title{font-weight: bold;}
-.staffBio p{display: block;}
+.staffBio div.headshot.active div.story{width: 100%;}
 </style>
 <div class="clearfix">
     <div class="col-sm-4 col-xs-12 staffBio" style="">
         <div class="headshot">
             <img src="/images/bio/Brian Burke.jpg" alt="Brian Burke" />
             <div class="label">
-                <h4>Brian Burke</h4>
-                <span class="title">President and CEO</span>
-                <span class="contactInfo"> 847.252.7284 | <a href="mailto:bburke@linkstechnology.com">email</a></span>
+                <h4>Brian Burke</h4>&nbsp;<span class="title">President and CEO</span>&nbsp;<span class="contactInfo"> 847.252.7284 | <a href="mailto:bburke@linkstechnology.com">email</a></span>
                <br />
             </div>
+            <div class="story">
             <p> Brian Burke, President and CEO, is a seasoned business owner and entrepreneur with 43 years of experience. He founded Links Technology Solutions with his son, Jim, and son-in-law, Bob, in 1999. Prior to starting Links, Brian began his career at 3M Company in 1968 where he held a variety of sales and management positions. He left 3M in 1978 to strike out on his own, and founded Woodfield Business Products, a full line office products company.&nbsp; He later expanded the business and joined with Xerox Corp. to form what would ultimately become the largest Xerox sales agency in the country.</p>
             <p> Brian is very active in the local business community. He was founding Chairman of the Board of the Schaumburg Business Association, was Chairman of the Northwest Suburban Association of Commerce and Industry, and President of the Schaumburg Rotary Club. He serves on the executive committee and Board of the Alexian Brothers foundation, and the Children's Advocacy Center.&nbsp; In addition, he serves on the Village of Schaumburg Business Development Commission, and the Schaumburg Park District joint advisory committee.<br />
             In his free time, Brian enjoys travel with his wife, and playing golf. He is a member of Medinah Country Club, and serves on the club's golf committee. He is Chairman of the "Monster Board" for the 2012 Ryder Cup at Medinah.</p>
+            </div>
         </div>
     </div>
     <div class="col-sm-4 col-xs-12 staffBio" style="">
         <div class="headshot">
             <img src="/images/bio/Burke Jim.jpg" alt="Jim Burke" />
+            <div class="label">
+                <h4>Jim Burke</h4>&nbsp;<span class="title">COO and VP of Security, Recruiting, and Major Account sales</span>&nbsp;<span class="contactInfo"> 847.252.7285 | <a href="mailto:jburke@linkstechnology.com">email</a></span>
+               <br />
+            </div>
+            
+            <p> Jim wears many hats at Links.&nbsp; In addition to major account sales, he is also responsible for Links' facilities and equipment, including Links' state of the art network and data center.&nbsp; A former U.S. Marine Security Guard, Jim maintains a Top Secret Security Clearance, and as Links Security Officer is responsible for maintaining a Top Secret Security Clearance for Links facilities and selected employees and consultants.&nbsp; He began his information technology career in 1994, prior to the explosive growth of the internet, and as a result, has a deep understanding of both a customer's IT staffing needs and the recruitment process. Jim is very active in the local business community, currently serving on both the Schaumburg Business Association and Campanelli YMCA board of directors.&nbsp; He is also a commissioner on the Village of Schaumburg plan commission.&nbsp; In his free time, Jim plays basketball and golf, and is devoted to his family.&nbsp; He is also head coach of his son's travel baseball team.</p>
+            
         </div>
     </div>
     <div class="col-sm-4 col-xs-12 staffBio" style="">
         <div class="headshot">
             <img src="/images/bio/VanValkenburg, Bob.jpg" alt="Bob VanValkenburg" />
+            <div class="label">
+               <h4>Bob VanValkenburg</h4>&nbsp;<span class="title">Vice President of Sales</span>&nbsp;<span class="contactInfo"> 847.252.7286 | <a href="mailto:bobv@linkstechnology.com">email</a></p></span>
+               <br />
+            </div>
+            
+            <p> Brian Burke, President and CEO, is a seasoned business owner and entrepreneur with 43 years of experience. He founded Links Technology Solutions with his son, Jim, and son-in-law, Bob, in 1999. Prior to starting Links, Brian began his career at 3M Company in 1968 where he held a variety of sales and management positions. He left 3M in 1978 to strike out on his own, and founded Woodfield Business Products, a full line office products company.&nbsp; He later expanded the business and joined with Xerox Corp. to form what would ultimately become the largest Xerox sales agency in the country.</p>
+            <p> Brian is very active in the local business community. He was founding Chairman of the Board of the Schaumburg Business Association, was Chairman of the Northwest Suburban Association of Commerce and Industry, and President of the Schaumburg Rotary Club. He serves on the executive committee and Board of the Alexian Brothers foundation, and the Children's Advocacy Center.&nbsp; In addition, he serves on the Village of Schaumburg Business Development Commission, and the Schaumburg Park District joint advisory committee.<br />
+            In his free time, Brian enjoys travel with his wife, and playing golf. He is a member of Medinah Country Club, and serves on the club's golf committee. He is Chairman of the "Monster Board" for the 2012 Ryder Cup at Medinah.</p>
+            
         </div>
     </div>
+
 </div>            
 <script type="text/javascript">
 window.onload = function() {
-$('div.headshot').click( function() {
-    $('div.headshot.active')
-        .removeClass('active')
-        .closest('.staffBio').attr('class', 'col-sm-4 col-xs-12 staffBio');
 
-    $(this).addClass('active')
-        .closest('div.col-sm-4.col-xs-12.staffBio').attr('class', 'col-xs-12 staffBio');
+    $('div.headshot')
+        .click( function() {
+            $(this).on('webkitTransitionEnd otransitionend oTransitionEnd transitionend', function(e) {
+                        console.log(e.originalEvent);
+                        if (e.originalEvent.propertyName === "width"){
+                            $(this).find('p').fadeIn();
+                        };
+                    });
 
+            $('div.headshot.active')
+                .find('p')
+                    .fadeOut(200);
+            $('div.headshot.active')
+                .removeClass('active')
+                .closest('.staffBio')
+                .attr('class', 'col-sm-4 col-xs-12 staffBio');
 
+            
+             $(this).closest('div.col-sm-4.col-xs-12.staffBio').attr('class', 'col-xs-12 staffBio');
+             $(this).addClass('active')
+                    
+            //.find('p').slideDown(600);
     });
+
 };
 </script>
 <!-- div hiding raw data to create a clean workspace -->
