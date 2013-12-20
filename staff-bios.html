@@ -19,6 +19,7 @@
     -ms-transition:all .5s ease-out;
     transition:all .5s ease-out;  
 }
+.staffBio.sectionTitle{position: relative;}
 .staffBio div.headshot{
     border-radius: 4px;
     background-color: #fff;
@@ -29,6 +30,7 @@
     max-width:199px;
     position: relative;  
 }
+.staffBio div.icon, 
 .staffBio img {
     border-radius: 2px;
     cursor:pointer;
@@ -36,29 +38,58 @@
     max-width:200px;
     width:100%;
 }
+.staffBio div.icon{
+    max-height:199px;
+    max-width:199px;
+    position: absolute;
+    top:15px;
+    left:0;
+    text-align: center;
+}
+.staffBio div.icon em{
+    color: #5E9CAE;
+    font-size: 45px;
+}
+.staffBio div.icon h3 {
+    color:#003054;
+    margin-bottom: 0px;
+}
+.staffBio div.icon a{
+    color:#003054;
+    text-decoration: none;
+}
+
 .staffBio div.label{
     background-color: #003054;
-    bottom:0px;
+    bottom:-200px;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
     filter: alpha(opacity=90);
     opacity: .9;
     position:absolute;
     padding: 5px;
     width: 100%;
-    -webkit-transition: background-color .1s linear;
-    -moz-transition: background-color .1s linear;
-    -o-transition: background-color .1s linear;
-    -ms-transition: background-color .1s linear;
-    transition: background-color .1s linear;
+    -webkit-transition: background-color .1s linear, bottom .25s ease-out;
+    -moz-transition: background-color .1s linear, bottom .25s ease-out;
+    -o-transition: background-color .1s linear, bottom .25s ease-out;
+    -ms-transition: background-color .1s linear, bottom .25s ease-out;
+    transition: background-color .1s linear,  bottom .25s ease-out;
 }
 .staffBio div.label span.contactInfo{display: none;}
+.staffBio div.label span.title{font-size:11px;}
+.staffBio:hover div.label {bottom:0px;}
 span.title ,span.contactInfo{white-space: nowrap;}
-.staffBio h4{color:#fff;margin: 0px;}
-.staffBio p{display: none;}
+.staffBio h4{
+    color:#fff;
+    font-size: 14px;
+    line-height: 1em;
+    margin: 0px;
+}
+.staffBio div.story{display: none;width: 100%;}
 
 /*-----
 active state styling
 -----*/
+
 .staffBio div.headshot.active{
     color:#5a5a5a;  
     max-height:100%;
@@ -80,14 +111,19 @@ active state styling
 .staffBio div.headshot.active h4{
     color:#003054;
     float: left;
+    font-size: 18px;
 }
 .staffBio div.headshot.active span{
     display:inline;
 }
-.staffBio div.headshot.active span.title{font-weight: bold;}
-.staffBio div.headshot.active div.story{width: 100%;}
+.staffBio div.headshot.active span.title{font-size:14px;font-weight: bold;}
+.staffBio div.headshot.active div.story{
+    /*display: block;*/
+  /*  width: 100%; */
+}
 </style>
-<div class="clearfix">
+<div id="management" class="col-xs-12 clearfix">
+    <h3>Management</h3>
     <div class="col-sm-4 col-xs-12 staffBio" style="">
         <div class="headshot">
             <img src="/images/bio/Brian Burke.jpg" alt="Brian Burke" />
@@ -106,330 +142,558 @@ active state styling
         <div class="headshot">
             <img src="/images/bio/Burke Jim.jpg" alt="Jim Burke" />
             <div class="label">
-                <h4>Jim Burke</h4>&nbsp;<span class="title">COO and VP of Security, Recruiting, and Major Account sales</span>&nbsp;<span class="contactInfo"> 847.252.7285 | <a href="mailto:jburke@linkstechnology.com">email</a></span>
+                <h4>Jim Burke</h4>&nbsp;<span class="title">COO and Multi-department VP</span>&nbsp;<span class="contactInfo"> 847.252.7285 | <a href="mailto:jburke@linkstechnology.com">email</a></span>
                <br />
             </div>
-            
+            <div class="story">
             <p> Jim wears many hats at Links.&nbsp; In addition to major account sales, he is also responsible for Links' facilities and equipment, including Links' state of the art network and data center.&nbsp; A former U.S. Marine Security Guard, Jim maintains a Top Secret Security Clearance, and as Links Security Officer is responsible for maintaining a Top Secret Security Clearance for Links facilities and selected employees and consultants.&nbsp; He began his information technology career in 1994, prior to the explosive growth of the internet, and as a result, has a deep understanding of both a customer's IT staffing needs and the recruitment process. Jim is very active in the local business community, currently serving on both the Schaumburg Business Association and Campanelli YMCA board of directors.&nbsp; He is also a commissioner on the Village of Schaumburg plan commission.&nbsp; In his free time, Jim plays basketball and golf, and is devoted to his family.&nbsp; He is also head coach of his son's travel baseball team.</p>
-            
+            </div>
         </div>
     </div>
     <div class="col-sm-4 col-xs-12 staffBio" style="">
         <div class="headshot">
             <img src="/images/bio/VanValkenburg, Bob.jpg" alt="Bob VanValkenburg" />
             <div class="label">
-               <h4>Bob VanValkenburg</h4>&nbsp;<span class="title">Vice President of Sales</span>&nbsp;<span class="contactInfo"> 847.252.7286 | <a href="mailto:bobv@linkstechnology.com">email</a></p></span>
+               <h4>Bob VanValkenburg</h4>&nbsp;<span class="title">Vice President of Sales</span>&nbsp;<span class="contactInfo"> 847.252.7286 | <a href="mailto:bobv@linkstechnology.com">email</a></span>
                <br />
             </div>
-            
+            <div class="story">
             <p> Brian Burke, President and CEO, is a seasoned business owner and entrepreneur with 43 years of experience. He founded Links Technology Solutions with his son, Jim, and son-in-law, Bob, in 1999. Prior to starting Links, Brian began his career at 3M Company in 1968 where he held a variety of sales and management positions. He left 3M in 1978 to strike out on his own, and founded Woodfield Business Products, a full line office products company.&nbsp; He later expanded the business and joined with Xerox Corp. to form what would ultimately become the largest Xerox sales agency in the country.</p>
             <p> Brian is very active in the local business community. He was founding Chairman of the Board of the Schaumburg Business Association, was Chairman of the Northwest Suburban Association of Commerce and Industry, and President of the Schaumburg Rotary Club. He serves on the executive committee and Board of the Alexian Brothers foundation, and the Children's Advocacy Center.&nbsp; In addition, he serves on the Village of Schaumburg Business Development Commission, and the Schaumburg Park District joint advisory committee.<br />
             In his free time, Brian enjoys travel with his wife, and playing golf. He is a member of Medinah Country Club, and serves on the club's golf committee. He is Chairman of the "Monster Board" for the 2012 Ryder Cup at Medinah.</p>
-            
+            </div>
         </div>
     </div>
 
-</div>            
+</div>
+<div class="clearfix col-xs-12">
+    <div class="col-sm-3 col-xs-6 staffBio sectionTitle">
+        <img src="/images/bio/transparent_200x200.png" alt="IT Support" />
+        <div class="icon">
+            <em class="fa fa-wrench"></em>
+            <h3><a href="/it-support">IT Support</a></h3>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Rich Johns.jpg" alt="Rich Johns" />
+            <div class="label">
+                <h4>Rich Johns</h4>&nbsp;<span class="title">IT Support Manager</span>&nbsp;<span class="contactInfo"> 847.252.7287 | <a href="mailto:rjohns@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Rich joined the Links Technology family in 2004 with 19 years of support team experience from a Fortune 500 Technology Company. As Manager of the Links' IT Support Team, he has been instrumental in building the top-level Links Technology support division our clients can count on today. Rich's ever watchful eye for new ways to expand our services is why we are continuously growing and on the cutting edge of service offerings. Prior to the start of his IT career, Rich attended Oklahoma State University. His free time is spent enjoying his family and coaching his boys in football, baseball and soccer.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Balogh Chris.JPG" alt="Chris Balogh" />
+            <div class="label">
+                <h4>Chris Balogh</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p>Chris started with Links in 2012 while attending DeVry University. Working full-time and attending school in the evenings, he earned his Associate of Science Degree in Network Systems Administration and is currently attaining his Bachelor of Science Degree in Network and Communications Management. Chris is also in the process of earning his CCNA certification. </p>
+            <p>At Links, Chris assists clients with support needs and troubleshooting their technology issues. He is definitely not afraid of hard work, commitment and dedication and a true asset to the IT Support team.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Kozera, Henry.jpg" alt="Henry Kozera" />
+            <div class="label">
+                <h4>Henry Kozera</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Joining Links Technology in 2013, Henry brings more than 25 years of hands-on experience in performing installations and as a Support Helpdesk Technician. He has his Associate in Applied Science Degree in Electronics and is CompTIA A+, Network+ and Security+ certified. Henry enjoys camping, bicycling, woodworking and motorcycling in his leisure time.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Krug, Steve.jpg" alt="Steve Krug" />
+            <div class="label">
+                <h4>Steve Krug</h4>&nbsp;<span class="title">Senior Macintosh Support Specialist</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Steve is the Senior Macintosh Support Specialist for Links Technology and has over 20-years-experience with Mac OS and other Mac related products . Since 2005, Steve has worked for Links, specializing in Apple Client, Server OS and all other aspects of Macintosh hardware. His background started in aeronautics, with ten years in the United States Navy as a Naval Officer and Naval Aviator and 14 years working for United Airlines. Steve holds a Bachelor of Science Degree in Professional Aeronautics from Embry-Riddle Aeronautical University. Hobbies include playing golf and bowling.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Lugay, Joe.jpg" alt="Joe Lugay" />
+            <div class="label">
+                <h4>Joe Lugay</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Since 2012, Joe has been an IT Support Engineer with the Links IT Support Helpdesk Team. He has over 15 years of experience in Information Technology, previously holding positions as a Support Technician, Help Desk Analyst and Technical Specialist. His positive attitude and ability to adapt to our clients' unique IT needs have proven to be a great asset to the Links Technology IT Team. Joe holds a Bachelor of Arts Degree from Loyola University of Chicago. Hobbies include family time, photography and pianist.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img alt="" src="/images/bio/Murray, Hugh.jpg" alt="Hugh Murray" />
+            <div class="label">
+                <h4>Hugh Murray</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Hugh became a member of the Links Support Helpdesk Team in 2006 with over 14 years of overall support and service experience. He has an Associate's Degree in Network Engineering and Electro/Mechanical Engineering, several training certificates, and is an Apple Certified Technician. Hugh enjoys fishing, bowling and golfing in his free time.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Przyszlak, Tone.jpg" alt="Tone Przyszlak" />
+            <div class="label">
+                <h4>Tone Przyszlak</h4>&nbsp;<span class="title">TarriffShark Support/ IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> With more than 14 years of experience, Tone has many areas of expertise in the IT field. He earned his Associate of Arts Degree from William Rainey Harper College and his Bachelor of Science Degree in Computer Information Systems from DeVry Institute of Technology. He is also Vmware VTSP certified and was featured in Fortune Magazine's article, "Finding, Training and Keeping the Best Service Workers" written by Ronald Hekoff. Prior to joining Links, Tone worked for a number of familiar companies as an IT Specialist including; Edy's Grand Ice Cream, Kraft Foods, Carnival Cruise Lines, Marriott International Hotels, and the City of Chicago. Outside the office, Tone enjoys spending time with his growing family. Hobbies include movies and board games.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Ritchie, Josh.jpg" alt="Josh Ritchie" />
+            <div class="label">
+                <h4>Josh Ritchie</h4>&nbsp;<span class="title">Senior Network Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Joshua joined Links Technology in 2006 and provides support to our clients by creating and implementing network and server solutions, assisting clients with application upgrades, and resolving network and application issues. He has over a decade of IT experience designing and repairing network infrastructure for several large corporations. Joshua earned his Bachelor of Science Degree in Network Communications and Business Management from DeVry University and is VMWare VSP Certified. He proudly served in the United State Army for nine years, including one year deployed in Iraq for Operation Iraqi Freedom. Away from Links, Joshua enjoys spending time with his family and anything related to computers or media systems.</p>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Shtym, Vitaliy.jpg" alt="Vitaliy Shtym" />
+            <div class="label">
+                <h4>Vitaliy Shtym</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Vitaliy joined Links Technology in 2012. As one of our IT Support Engineers, he manages the infrastructure and provides support for our clients. Prior to becoming a member of the Links family, Vitaliy acquired his great customer service skills while servicing Geek Squad clients. He attended IIT. Hobbies include cars and the great outdoors.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Tasharski, Travis.jpg" alt="Travis Tasharski" />
+            <div class="label">
+                <h4>Travis Tasharski</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> ravis started with Links Technology in 2013 after serving active duty as a Sergeant in the United States Army for six years. He has experience in Network and Data Analysis and RF Communications and has completed courses in Leadership Professional Development and 3M Fiber Optic Installer. Currently Travis is working on his Information Systems Management degree. He is a proud member of the Veterans of Foreign Wars and American Legion organizations. In his free time, Travis enjoys spending time with his wife and son and playing tabletop games.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Williams, Mike.jpg" alt="Mike Williams" />
+            <div class="label">
+                <h4>Mike Williams</h4>&nbsp;<span class="title">IT Support Engineer</span>&nbsp;<span class="contactInfo"> 847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> As an IT Support Engineer for Links, Mike prides himself on being able to fix even the most complex network or server issues. He brings with him a strong IT background and a knack for network troubleshooting. He has 16+ years of corporate IT management skills and Mike has earned his Bachelor of Science Degree in Network Communications and Management from DeVry University; as well as numerous Microsoft certifications. Hobbies include spending time with his family and reading.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-6 staffBio sectionTitle">
+        <img src="/images/bio/transparent_200x200.png" alt="Web Design" />
+        <div class="icon">
+            <em class="fa fa-sitemap"></em>
+            <h3><a href="/web-design">Web Design</a></h3>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Reitz, John.jpg" alt="John Reitz" />
+            <div class="label">
+                <h4>John Reitz</h4>&nbsp;<span class="title">Creative Director</span>&nbsp;<span class="contactInfo"> 847.252.7263 | <a href="mailto:jreitz@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> As a Project Manager and Creative Director at Links, John is a resource to rely on throughout your project's life-cycle. His various roles at Links range from creative design and analysis to online marketing consulting and project management. He has been designing and developing websites since the mid 90's, working with such prestigious dot-coms as America Online, MyPoints.com and also locally, for the Schaumburg Park District. John received his Bachelor of Science Degree from Bradley University in Peoria, Illinois. His hobbies include golfing, biking and John is a member of the Chicago Curling Club.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/placeholder.jpg" alt="Aaron Broderick" />
+            <div class="label">
+                <h4>Aaron Broderick</h4>&nbsp;<span class="title">Web Designer</span>&nbsp;<span class="contactInfo"> 847.252.1620 | <a href="mailto:ABroderick@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Aaron came to links in November of 2013.  He specializes in graphic and web design, as well as front-end development.  Before joining links, he worked with clients in the medical field to build their web presences.  He possesses a B.F.A. in Web Design and Interactive Media from the Illinois Institute of Art - Schaumburg, as well as a B.S. in Psychology from Northland College, Ashland WI.  Aaron has an array of experience spanning 14 years across different fields, giving him a unique perspective of what clients will need for their websites.  Hobbies include music, art, and gaming.</p>
+            </div>
+        </div>
+    </div>    
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Nyquist, Tim.jpg" alt="Tim Nyquist" />
+            <div class="label">
+                <h4>Tim Nyquist</h4>&nbsp;<span class="title">Senior Web & Graphic Designer</span>&nbsp;<span class="contactInfo"> 847.252.1610 | <a href="mailto:tnyquist@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Tim provides the creative vision behind many of our most successful design projects. Since receiving his Bachelor of Arts in Graphic Design & Communication from Valparaiso University, Tim has been designing web and print projects for over a decade. He stayed at Valpo another four years to design all marketing materials, print collateral and website for the University's Office of Admissions. A Detroit sports fan, Tim loves to watch and play most sports; particularly basketball and golf. Other interests include music, social media, and his dog, Fia.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Palmer, Beth.jpg" alt="Beth Palmer" />
+            <div class="label">
+                <h4>Beth Palmer</h4>&nbsp;<span class="title">Print & Web Designer</span>&nbsp;<span class="contactInfo"> 847.252.1620 | <a href="mailto:bpalmer@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Beth specializes in client website support and email marketing at Links. She updates websites, creates and manages email marketing campaigns and coordinates training sessions. Beth has a Bachelor of Arts Degree in Criminal Justice and Interdisciplinary Studies from Iowa State University. She has worked for The Center for Creative Justice where Beth was in charge of finding people who fled probation. She is an avid runner and loves working out. Beth also enjoys seasonal sports such as snowboarding in the winter and boating in the summer.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Shatzer, Brice.jpg" alt="Brice Shatzer" />
+            <div class="label">
+                <h4>Brice Shatzer</h4>&nbsp;<span class="title">Web Designer</span>&nbsp;<span class="contactInfo"> 847-252-1614 | <a href="mailto:bshatzer@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Brice came to Links in 2012 and specializes in graphic design and front-end development--helping clients take sites from concept to functional. Shortly before joining the company, he earned his Bachelor of Arts Degree in Communication at Carthage College in Kenosha, WI. While attending Carthage, Brice had the opportunity to be involved with a diverse array of academic and professional projects ranging from audio/video production and community management, to event planning and technical support; and everything in-between. His hobbies include playing various sports, as well as, coaching youth soccer.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-3 col-xs-6 staffBio sectionTitle">
+        <img src="/images/bio/transparent_200x200.png" alt="App Development" />
+        <div class="icon">
+            <em class="fa fa-tasks"></em>
+            <h3><a href="/application-development">App Development</a></h3>
+        </div>
+    </div>
+    
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Kravis, Gary.jpg" alt="Gary Kravis" />
+            <div class="label">
+                <h4>Gary Kravis</h4>&nbsp;<span class="title">Director of Software Solutions</span>&nbsp;<span class="contactInfo"> 847.252.7288 | <a href="mailto:gkravis@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Gary is the Director of Software Solutions and TariffShark Product Manager for Links Technology. A large portion of his experience lies in tariff document filing and management and the software requirements for that arena. After graduating from the University of Illinois with a Bachelor of Science Degree in Computer Science and Business, Gary has spent much of his career in the IT industry developing software for U.S. energy companies. Gary has a strong commitment to the delivery of projects on time...priding himself on jobs done right the first time and on-budget. His hobbies include golf, poker, movies and "safe computing".</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Klein, John.jpg" alt="John Klein" />
+            <div class="label">
+                <h4>John Klein</h4>&nbsp;<span class="title">Project Manager</span>&nbsp;<span class="contactInfo"> 847.252.7281 | <a href="mailto:jklein@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> John has been with Links Technology for over 12 years working with large firms such as Cisco Systems and CVS/Caremark, as well as many organizations in the local community. He offers a diverse background focusing on software development in the analysis & design, project management and quality assurance areas. John received his undergraduate degree from the University of Florida and holds a Master Degree in Business Administration (MBA) from Auburn University with a specialization in Management Information Systems. John enjoys golfing, swimming and spending time with his family.</p>
+            </div>
+        </div>
+    </div>    
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Colecchia Paul.jpg" alt="Paul Colecchia" />
+            <div class="label">
+                <h4>Paul Colecchia</h4>&nbsp;<span class="title">Software Developer</span>&nbsp;<span class="contactInfo"> 847.252.1613 | <a href="mailto:pcolecchia@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> With over a decade of experience in .Net application development, Links welcomed Paul as a software developer in 2013. Prior to joining the Links team, he created and maintained websites and windows applications for large multinational corporations using .Net Framework, C#, VB, ASP.NET, MVC, WinForms, WCF and SQL -- acquiring a very impressive computer skill set. Paul earned his Bachelor of Science Degree in Applied Computer Science from Northern Illinois University.When not in the office, Paul enjoys socializing with family and friends.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Lutz, Joe.jpg" alt="Joe Lutz" />
+            <div class="label">
+                <h4>Joe Lutz</h4>&nbsp;<span class="title">Software Developer</span>&nbsp;<span class="contactInfo">  847.252.1616 | <a href="mailto:jlutz@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Joe started with Links Technology in 2008 and has more than seven years-experience in the IT field. Prior to joining Links, Joe was a Software Developer and IT Manager where he wrote custom drafting software, blueprinting software and maintained the IT infrastructure. He earned his Associate Degree in Computer Science with software development as his area of expertise. Joe specializes in ASP.Net, MVC, and C#.</p>
+            </div>
+        </div>
+    </div>    
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Rios, Sean.jpg" alt="Sean Rios" />
+            <div class="label">
+                <h4>Sean Rios</h4>&nbsp;<span class="title">Software Developer</span>&nbsp;<span class="contactInfo"> 847.252.1615 | <a href="mailto:srios@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p>  Sean is a Software Developer for Links and brings over a decade of IT experience to the company. An expert in website development, Sean has honed his development and design skills with past companies such as Volition (THQ) and Legacy.com. He holds a degree from the University of Illinois in Computer Science. In addition to watching sports, Sean loves to travel.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Stoev, Pavel.jpg" alt="Paval Stoev" />
+            <div class="label">
+                <h4>Paval Stoev</h4>&nbsp;<span class="title">Senior Software Developer</span>&nbsp;<span class="contactInfo"> 847.252.7262 | <a href="mailto:pstoev@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Pavel has worked with computers for more than 20 years and has over 15 years of experience with custom commercial software development ranging from simple utilities to highly scalable web and desktop applications. Over the past few years he has been heavily involved with popular Microsoft technologies such as the SQL Server, .NET Framework and ASP.NET. Pavel has worked in many different roles as a programmer, architect, project manager and consultant in a wide range of areas including databases, virtualization and cloud platforms, cryptography, server architecture and distributed systems. More recently he has been working with SQL Server 2012, Entity Framework and the new features offered by Microsoft .NET Framework 4.5 - exciting new products which aim to simplify the creation of complex data-driven web sites and desktop applications. When he's not developing software solutions or engaging in conversations about software technology, Pavel is a licensed pilot, food connoisseur, photographer and soccer player.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio sectionTitle">
+        <img src="/images/bio/transparent_200x200.png" alt="Admin" />
+        <div class="icon" style="cursor:default">            
+            <em class="fa fa-folder-open"></em>
+            <h3>Admin</h3>
+        </div>
+    </div> 
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Errera, Patty.jpg" alt="Patty Errera" />
+            <div class="label">
+                <h4>Patty Errera</h4>&nbsp;<span class="title">Office Manager</span>&nbsp;<span class="contactInfo"> 847.252.7289 | <a href="mailto:perrera@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Patty is Office Manager at Links Technology and has been a member of the Links' team for over ten years. She not only handles payroll and a variety of other accounting duties; but oversees HR responsibilities including employee insurance and new hire/consultant support and documentation.</p>
+            <p> Patty is a veteran of the finance world with over 30 years of experience. Her career history includes working for the City of Chicago and the Chicago Board of Education. She enjoys gardening and donating her time to many different charitable organizations throughout her community.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Nystrom, Mary.jpg" alt="Mary Nystrom" />
+            <div class="label">
+                <h4>Mary Nystrom</h4>&nbsp;<span class="title">Administration</span>&nbsp;<span class="contactInfo"> 847.252.1610 | <a href="mailto:mnystrom@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> At Links Technology, Mary assists with a plethora of jobs from HR duties and assisting with accounts receivables/payables with a main focus on Links TariffShark accounts; to organizing special events. Prior to joining the Links family, Mary had been working in various administrative assisting positions for 16 years in Ohio and Illinois ranging from a hospital radiology department, special education administrative assistant for Ohio public schools and in the U-46 school district here in Illinois. She enjoys spending time with her family, gardening and home decorating projects.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Piper, Mary Kay.jpg" alt= "Mary Kay Piper" />
+            <div class="label">
+                <h4>Mary Kay Piper</h4>&nbsp;<span class="title">Administration</span>&nbsp;<span class="contactInfo"> 877.252,1612 | <a href="mailto:MPiper@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Mary Kay joined Links in 2013 and is responsible for a range of duties including employee insurance and new hire/consultant support and documentation and invoicing of various customers. She also contributes to miscellaneous writing projects that pop up in the office. Her diverse background ranges in graphic arts, business management, and sales and training; and she has worked for several full-production art studios as art director, typography manager, and project manager. In the graphic arts capacity, she serviced clients such as Wrigley, Blue Cross Blue Shield and R. J. Donnelly. In the sales arena, she served as Sales Manager/Trainer for several corporate offices - most prominently, The Pampered Chef, Ltd. where she designed, authored and implemented company publications, as well as presented training workshops, on stage presentations at conferences; and planned/presented regional field training visits across the country. Mary Kay holds a Bachelor of Arts Degree in Graphic Arts from Western Illinois University and is a Certified Franklin Covey Instructor and licensed in Health and Life Insurance. Hobbies include watercolor painting, sketching and golfing.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3 col-xs-6 staffBio sectionTitle">
+        <img src="/images/bio/transparent_200x200.png" alt="IT Staffing" />
+        <div class="icon">
+            <em class="fa fa-group"></em>
+            <h3><a href="/it-staffing">IT Staffing</a></h3>
+        </div>
+    </div> 
+    
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Hart, Tim.jpg" alt="Tim Hart" />
+            <div class="label">
+                <h4>Tim Hart</h4>&nbsp;<span class="title">VP of Professionals (East)</span>&nbsp;<span class="contactInfo"> 919.645.5785 | <a href="mailto:tkretz@linkstechnology.com">email</a></span>
+                <!-- orginal title
+                <h4>Tim Hart</h4>&nbsp;<span class="title"> VP of Professional Services - Eastern Region</span>&nbsp;<span class="contactInfo"> 919.645.5785 | <a href="mailto:tkretz@linkstechnology.com">email</a></span>-->
+                <br />
+            </div>
+            <div class="story">
+            <p> Tim manages the Eastern Region for Links and oversees Managed Services and contractual fulfillments for IT clients. With 25 years of experience in the Network and IT fields, Tim's expertise draws from his work with industry leaders such as Sprint, NCR, Unisys and Lucent, and he has led engagements throughout the US, Canada, Europe, South America and Southeast Asia. </p>
+            <p> In a consultancy role, his work in network operations, software and hardware development, data warehousing and market forecasting allowed him to establish reselling and partnership arrangements with companies like Brio, Redbrick, Oracle and Informix. His efforts to identify churn risks, increase market penetration and maximize customer return on investment led to the adoption of decision-support applications by GTE, Bell Atlantic, Pacific Bell, British Columbia Telecom and Unitel. Prior to joining Links, he consulted with Bank of America to develop, test and launch their Real Estate Banking Portal.</p>
+            <p> Tim is a graduate of Purdue University, where he earned a BS in Electrical Engineering. He also holds an MBA with a concentration in Finance from the University of Missouri. He currently resides in Raleigh, North Carolina, near the renowned Research Triangle Park. He lives with his wife and three children and enjoys fly-fishing and cheering on his beloved Cubs, Bears and Boilermakers. When he's not helping with math homework, Tim indulges his keen interest in United States history by reading favorite authors Doris Kearns Goodwin, David McCullough and Stephen E. Ambrose, among others.</p> <p> Tim has been with Links since February, 2002, and was recently named Vice President of Professional Services for the Eastern Region.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Kretz, Tom.jpg" alt="Tom Kretz" />
+            <div class="label">
+                <h4>Tom Kretz</h4>&nbsp;<span class="title">VP of Professionals (West)</span>&nbsp;<span class="contactInfo"> 847.252.1978 | <a href="mailto:thart@linkstechnology.com">email</a></span>
+                <!-- orginal title
+                <h4>Tom Kretz</h4>&nbsp;<span class="title">VP of Professional Services - Western Region </span>&nbsp;<span class="contactInfo"> 847.252.1978 | <a href="mailto:thart@linkstechnology.com">email</a></span> --> 
+                <br />
+            </div>
+            <div class="story">
+            <p> Tom manages the Western Region for Links and is responsible for all of our IT staffing clients and consultants in the Western US. He is a 10-year Links veteran who began his career with us managing client projects. A former US Army Captain, Tom began his IT career in 1994 managing troop deployments with DoD computer systems. He then became a project / program manager during the dot-com boom and obtained a wealth of IT experience in multiple industries before joining Links in 2001. His exuberant talent to drive and staff projects quickly led him to our management ranks.</p>
+            <p> Tom lives in San Francisco and manages our Silicon Valley offices where the beautiful weather allows him to be an avid runner, soccer player, and has encouraged him to pick up Links' favorite past time, golf.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/Easterday, Debi.jpg" alt="Debi Easterday" />
+            <div class="label">
+                <h4>Debi Easterday</h4>&nbsp;<span class="title">Director of Recruiting</span>&nbsp;<span class="contactInfo"> 419.420.3782 | <a href="mailto:dbulkowski@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p>  Debi is an IT Recruiter for Links Technology and sources niche-specific technology positions and screening candidates for our clients. She has 12 years of experience and has a Bachelors Degree in Interdisciplinary Studies. Debi has many hobbies such as playing guitar, singing, but has the most fun spending quality time with her children.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/placeholder.jpg" alt="Dennis Fiala" />
+            <div class="label">
+                <h4>Dennis Fiala</h4>&nbsp;<span class="title">IT Recruiter</span>&nbsp;<span class="contactInfo"> 847.252.1976| <a href="mailto:DFiala@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Dennis is a native of Illinois and currently resides in Arizona. He has a strong background of thirteen years working as an IT Recruiter. He has extensive experience in full life cycle recruiting and sound knowledge of past and current technologies. In addition, Dennis is very personable and enjoys working with others. He takes pride in maintaining relationships with past, present and future consultants. Outside of work Dennis enjoys life with his wife and three boys.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/placeholder.jpg" alt="Smriti Singh" />
+            <div class="label">
+                <h4>Smriti Singh</h4>&nbsp;<span class="title">Recruiter</span>&nbsp;<span class="contactInfo"> 847.252.1609 | <a href="mailto:SSingh@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Smriti is an IT Recruiter for Links Technology and specializes in bringing talent and technolgy together. Smriti is a Masters in Computer Science and started her career as a Software Developer with Amdocs.  She loves playing basketball and cooking for her family and friends."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-xs-6 staffBio">
+        <div class="headshot">
+            <img src="/images/bio/McLeod, Joane .jpg" alt="Joane McLeod" />
+            <div class="label">
+                <h4>Joane McLeod</h4>&nbsp;<span class="title">Business Anaylst</span>&nbsp;<span class="contactInfo"> 847.252.2050 | <a href="mailto:JMcLeod@linkstechnology.com">email</a></span>
+                <br />
+            </div>
+            <div class="story">
+            <p> Joane McLeod joined the Links family as a Business Analyst in November of 2013 and bringing over 12 years of operations consulting experience from Big Six firm. Joane has performed dozens of IT and Software Evaluations, Selection and Implementation Oversight projects. She partnered with clients to facilitate Business Process Improvement Reviews involving BPI training, re-design and process change implementation. Previous employment included the administration of the newly-formed IDOT Center of Excellence to bring BPI methodologies to the State of Illinois. Joane also worked with an environmental and food safety consulting firm to perform FSSC 22000, BRC, SQF, and IFS audit preparation consulting, including Process mapping, Internal Audit standards, HACCP plans and documentation to meet the latest GFSI requirements and also assisted with Gap Analysis reviews for OSHA standards and for security.</p>
+            <p> Joane has her Bachelor of Science degree from Montana State University-Bozeman. She believes strongly in public service and serves on the Board of Directors for the Children's Advocacy Center as well as several other village and political committees. She achieved Gold Level Certification as a Girl Scout. Spending time with her large family provides her greatest satisfaction, and she often finds herself cooking dinners for 20 or more.</p>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
 <script type="text/javascript">
 window.onload = function() {
 
-    $('div.headshot')
-        .click( function() {
-            $(this).on('webkitTransitionEnd otransitionend oTransitionEnd transitionend', function(e) {
-                        console.log(e.originalEvent);
-                        if (e.originalEvent.propertyName === "width"){
-                            $(this).find('p').fadeIn();
-                        };
-                    });
+    $('article.content').addClass('clearfix');
 
-            $('div.headshot.active')
-                .find('p')
-                    .fadeOut(200);
-            $('div.headshot.active')
-                .removeClass('active')
-                .closest('.staffBio')
-                .attr('class', 'col-sm-4 col-xs-12 staffBio');
-
-            
-             $(this).closest('div.col-sm-4.col-xs-12.staffBio').attr('class', 'col-xs-12 staffBio');
-             $(this).addClass('active')
-                    
-            //.find('p').slideDown(600);
+    $('div.sectionTitle *').click( function(event) {
+        event.preventDefault();
+        var sectionURL = $(this).closest('div.sectionTitle').find('h3 a').attr('href');
+        if(sectionURL){ window.location = sectionURL}
     });
+
+    $('div.headshot img')
+        .click( function() {
+            var $thisHeadshot = $(this).closest('div.headshot');
+            var headshotStatus = $thisHeadshot.hasClass('active');
+            var $headshotActive = $('div.headshot.active');
+            
+//show story on bio transition to complete
+            $thisHeadshot.on('webkitTransitionEnd otransitionend oTransitionEnd mstransitionend transitionend', function(e) {
+/*
+                        console.log(e);
+                        console.log('---');
+                        console.log(e.originalEvent);
+                        console.log('---'); 
+                        console.log(e.originalEvent.propertyName);
+                        console.log('>>>>>>') */
+                if (e.originalEvent.propertyName === "max-width" && $(this).hasClass('active') ) {
+                   // console.log(e);
+                    $thisHeadshot.find('div.story').delay(200).show();
+                };
+            });
+            //debugger
+
+/*
+            debugger 
+            var joo = $('div.headshot.active').find('div.story').text();
+            console.log(joo);
+            //$('div.headshot.active div.story').hide();
+            $('div.story:visible').hide();
+            //.fadeOut(200);*/                    
+
+//----- hide currently active bio -----
+            $headshotActive.find('div.story').hide();
+
+            if ( $headshotActive.closest('#management').length === 1 )  {
+            //  console.log('closing headshot in management');
+                $headshotActive 
+                    .removeClass('active')
+                    .closest('.staffBio')
+                    .attr('class', 'col-sm-4 col-xs-6 staffBio');
+            }
+
+            else {
+          //    console.log('closing headshot 4 wide');
+                $headshotActive 
+                    .removeClass('active')
+                    .closest('.staffBio')
+                    .attr('class', 'col-sm-3 col-xs-6 staffBio');
+            }
+//----- ----- 
+
+//----- make clicked bio active -----            
+            if ( headshotStatus === false ){
+                $thisHeadshot.addClass('active');
+                $thisHeadshot.closest('div.staffBio').attr('class', 'col-xs-12 staffBio');
+            }
+
+//----- -----
+            if ( )
+
+    }).delay(200).
+;
 
 };
 </script>
-<!-- div hiding raw data to create a clean workspace -->
-<div style="display:none;">
-<!-- -->    
-        <h2>Management </h2>
-        <p><img alt="" src="/images/bio/Brian Burke.jpg" style="border: 0px none;" /><br />
-        Brian Burke<br />
-        President and CEO<br />
-        847.252.7284 | <a href="mailto:bburke@linkstechnology.com">email</a></p>
-        <p> Brian Burke, President and CEO, is a seasoned business owner and entrepreneur with 43 years of experience. He founded Links Technology Solutions with his son, Jim, and son-in-law, Bob, in 1999. Prior to starting Links, Brian began his career at 3M Company in 1968 where he held a variety of sales and management positions. He left 3M in 1978 to strike out on his own, and founded Woodfield Business Products, a full line office products company.&nbsp; He later expanded the business and joined with Xerox Corp. to form what would ultimately become the largest Xerox sales agency in the country.</p>
-        <p>
-        Brian is very active in the local business community. He was founding Chairman of the Board of the Schaumburg Business Association, was Chairman of the Northwest Suburban Association of Commerce and Industry, and President of the Schaumburg Rotary Club. He serves on the executive committee and Board of the Alexian Brothers foundation, and the Children's Advocacy Center.&nbsp; In addition, he serves on the Village of Schaumburg Business Development Commission, and the Schaumburg Park District joint advisory committee.<br />
-        In his free time, Brian enjoys travel with his wife, and playing golf. He is a member of Medinah Country Club, and serves on the club's golf committee. He is Chairman of the "Monster Board" for the 2012 Ryder Cup at Medinah.</p>
-        <p>
-        <img alt="" src="/images/bio/Burke Jim.jpg" style="border: 0px none;" /><br />
-        Jim Burke<br />
-        COO and VP of Security, Recruiting, and Major Account sales<br />
-        847.252.7285 | <a href="mailto:jburke@linkstechnology.com">email</a></p>
-        <p>
-        Jim wears many hats at Links.&nbsp; In addition to major account sales, he is also responsible for Links' facilities and equipment, including Links' state of the art network and data center.&nbsp; A former U.S. Marine Security Guard, Jim maintains a Top Secret Security Clearance, and as Links Security Officer is responsible for maintaining a Top Secret Security Clearance for Links facilities and selected employees and consultants.&nbsp; He began his information technology career in 1994, prior to the explosive growth of the internet, and as a result, has a deep understanding of both a customer's IT staffing needs and the recruitment process. Jim is very active in the local business community, currently serving on both the Schaumburg Business Association and Campanelli YMCA board of directors.&nbsp; He is also a commissioner on the Village of Schaumburg plan commission.&nbsp; In his free time, Jim plays basketball and golf, and is devoted to his family.&nbsp; He is also head coach of his son's travel baseball team.</p>
-        <p>
-        <img alt="" src="/images/bio/VanValkenburg, Bob.jpg" style="border: 0px none;" /><br />
-        Bob Van Valkenburg<br />
-        Vice President of Sales<br />
-        847.252.7286 | <a href="mailto:bobv@linkstechnology.com">email</a></p>
-        <p>
-        Bob VanValkenburg, Vice President of Sales, has 20+ years of extensive sales experience, including 19 years in the technology field. Prior to joining Links, Bob was a Sales Manager for Stadtech Inc., a private technology firm; and worked with such blue-chip clients as Abbott Laboratories and Caremark/CVS Corporation. Bob began his career working for Xerox, where he benefited from one of the nation's strongest sales training programs. He currently heads up the Application Development and Web Site Design divisions at Links; and had responsibility in the development and marketing of TariffShark and PowerShark EQR, two of Links' highly successful custom software products. </p>
-        <p>
-        Bob is a graduate of Ithaca College in New York. He was a member of the 1988 Division III World Series Champion Ithaca Bombers baseball squad. He actively participates in numerous committees and is both a head coach and President of the Rampage Rage Softball Baseball Association. Free time is spent enjoying time with his family, golfing, coaching, and staying fit according to CrossFit.</p>
-        <h2>Help Desk Support</h2>
-        <p>
-        <img alt="" src="/images/bio/Rich Johns.jpg" style="border: 0px none;" /><br />
-        Rich Johns<br />
-        IT Support Manager<br />
-        847.252.7287 | <a href="mailto:rjohns@linkstechnology.com">email</a></p>
-        <p>
-        Rich joined the Links Technology family in 2004 with 19 years of support team experience from a Fortune 500 Technology Company. As Manager of the Links&rsquo; IT Support Team, he has been instrumental in building the top-level Links Technology support division our clients can count on today. Rich&rsquo;s ever watchful eye for new ways to expand our services is why we are continuously growing and on the cutting edge of service offerings. Prior to the start of his IT career, Rich attended Oklahoma State University. His free time is spent enjoying his family and coaching his boys in football, baseball and soccer.     </p>
-        <p>
-        Favorite website: <a href="http://www.LinkedIn.com">www.LinkedIn.com</a>     </p>
-        <p>
-        <img alt="" src="/images/bio/Balogh Chris.JPG" style="border: 0px none;" /><br />
-        Chris Balogh<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Chris started with Links in 2012 while attending DeVry University. Working full-time and attending school in the evenings, he earned his Associate of Science Degree in Network Systems Administration and is currently attaining his Bachelor of Science Degree in Network and Communications Management. Chris is also in the process of earning his CCNA certification. </p>
-        <p>
-        At Links, Chris assists clients with support needs and troubleshooting their technology issues. He is definitely not afraid of hard work, commitment and dedication and a true asset to the IT Support team.</p>
-        <p>
-        <img alt="" src="/images/bio/Kozera, Henry.jpg" style="border: 0px none;" /><br />
-        Henry Kozera<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Joining Links Technology in 2013, Henry brings more than 25 years of hands-on experience in performing installations and as a Support Helpdesk Technician. He has his Associate in Applied Science Degree in Electronics and is CompTIA A+, Network+ and Security+ certified. Henry enjoys camping, bicycling, woodworking and motorcycling in his leisure time.     </p>
-        <p>
-        <img alt="" src="/images/bio/Krug, Steve.jpg" style="border: 0px none;" /><br />
-        Steve Krug<br />
-        Senior Macintosh Support Specialist<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Steve is the Senior Macintosh Support Specialist for Links Technology and has over 20-years-experience with Mac OS and other Mac related products. Since 2005, Steve has worked for Links, specializing in Apple Client, Server OS and all other aspects of Macintosh hardware. His background started in aeronautics, with ten years in the United States Navy as a Naval Officer and Naval Aviator and 14 years working for United Airlines. Steve holds a Bachelor of Science Degree in Professional Aeronautics from Embry-Riddle Aeronautical University. Hobbies include playing golf and bowling.</p>
-        <p>
-        <img alt="" src="/images/bio/Lugay, Joe.jpg" style="border: 0px none;" /><br />
-        Joe Lugay<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Since 2012, Joe has been an IT Support Engineer with the Links IT Support Helpdesk Team. He has over 15 years of experience in Information Technology, previously holding positions as a Support Technician, Help Desk Analyst and Technical Specialist. His positive attitude and ability to adapt to our clients' unique IT needs have proven to be a great asset to the Links Technology IT Team. Joe holds a Bachelor of Arts Degree from Loyola University of Chicago. Hobbies include family time, photography and pianist.</p>
-        <p>
-        <img alt="" src="/images/bio/McManamon, Patrick.jpg" style="border: 0px none;" /><br />
-        Patrick McManamon<br />
-        Manager, Advanced Services<br />
-        842.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Patrick is the Links Manager of Advanced Services with more than 10 years of experience. He boasts the Links motto of &ldquo;Bringing People &amp; Technology Together&rdquo;. Patrick maintains Cisco CCNA, VCP5, Network+, A+ Certifications and specializes in Network Management and Development, Virtual Infrastructure, Business Continuity and Disaster Preparedness Planning. His impressive resume includes The Chicago Department of Public Health Bioterrorism Response Program as a Technology Specialist. Patrick holds an Associate Degree in Computer Networking Technology from Westwood College.&nbsp; Hobbies include family time, bike riding and fishing.</p>
-        <p>
-        <img alt="" src="/images/bio/Murray, Hugh.jpg" style="border: 0px none;" /><br />
-        Murray, Hugh<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Hugh became a member of the Links Support Helpdesk Team in 2006 with over 14 years of overall support and service experience. He has an Associate&rsquo;s Degree in Network Engineering and Electro/Mechanical Engineering, several training certificates, and is an Apple Certified Technician. Hugh enjoys fishing, bowling and golfing in his free time.     </p>
-        <p>
-        <img alt="" src="/images/bio/Przyszlak, Tone.jpg" style="border: 0px none;" /><br />
-        Tone Przyszlak<br />
-        TarriffShark Support/ IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        With more than 14 years of experience, Tone has many areas of expertise in the IT field. He earned his Associate of Arts Degree from William Rainey Harper College and his Bachelor of Science Degree in Computer Information Systems from DeVry Institute of Technology.&nbsp; He is also Vmware VTSP certified and was featured in Fortune Magazine&rsquo;s article, &ldquo;Finding, Training and Keeping the Best Service Workers&rdquo; written by Ronald Hekoff. Prior to joining Links, Tone worked for a number of familiar companies as an IT Specialist including; Edy's Grand Ice Cream, Kraft Foods, Carnival Cruise Lines, Marriott International Hotels, and the City of Chicago. Outside the office, Tone enjoys spending time with his growing family. Hobbies include movies and board games.</p>
-        <p>
-        <img alt="" src="/images/bio/Ritchie, Josh.jpg" style="border: 0px none;" /><br />
-        Joshua Ritchie<br />
-        Senior Network Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Joshua joined Links Technology in 2006 and provides support to our clients by creating and implementing network and server solutions, assisting clients with application upgrades, and resolving network and application issues. He has over a decade of IT experience designing and repairing network infrastructure for several large corporations. Joshua earned his Bachelor of Science Degree in Network Communications and Business Management from DeVry University and is VMWare VSP Certified. He proudly served in the United State Army for nine years, including one year deployed in Iraq for Operation Iraqi Freedom. Away from Links, Joshua enjoys spending time with his family and anything related to computers or media systems.</p>
-        <p>
-        <img alt="" src="/images/bio/Shtym, Vitaliy.jpg" style="border: 0px none;" /><br />
-        Vitaliy Shtym<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>Vitaliy joined Links Technology in 2012. As one of our IT Support Engineers, he manages the infrastructure and provides support for our clients. Prior to becoming a member of the Links family, Vitaliy acquired his great customer service skills while servicing Geek Squad clients. He attended IIT. Hobbies include cars and the great outdoors.</p>
-        <p>
-        <img alt="" src="/images/bio/Tasharski, Travis.jpg" style="border: 0px none;" /><br />
-        Travis Tasharski<br />
-        IT Support Engineer<br />
-        847.252.7600 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        Travis started with Links Technology in 2013 after serving active duty as a Sergeant in the United States Army for six years. He has experience in Network and Data Analysis and RF Communications and has completed courses in Leadership Professional Development and 3M Fiber Optic Installer. Currently Travis is working on his Information Systems Management degree. He is a proud member of the Veterans of Foreign Wars and American Legion organizations. In his free time, Travis enjoys spending time with his wife and son and playing tabletop games.</p>
-        <p>
-        <img alt="" src="/images/bio/Williams, Mike.jpg" style="border: 0px none;" /><br />
-        Mike Williams<br />
-        IT Support Engineer<br />
-        847.252.7001 | <a href="mailto:support@linkstechnology.com">email</a></p>
-        <p>
-        As an IT Support Engineer for Links, Mike prides himself on being able to fix even the most complex network or server issues. He brings with him a strong IT background and a knack for network troubleshooting. He has 16+ years of corporate IT management skills and Mike has earned his Bachelor of Science Degree in Network Communications and Management from DeVry University; as well as numerous Microsoft certifications. Hobbies include spending time with his family and reading.</p>
-        <h2>Web Design</h2>
-        <p><img alt="" src="/images/bio/Reitz, John.jpg" style="border: 0px none;" /><br />
-        John Reitz<br />
-        Creative Director<br />
-        847.252.7263 | <a href="mailto:jreitz@linkstechnology.com">email</a></p>
-        <p>
-        As a Project Manager and Creative Director at Links, John is a resource to rely on throughout your project&rsquo;s life-cycle. His various roles at Links range from creative design and analysis to online marketing consulting and project management. He has been designing and developing websites since the mid 90&rsquo;s, working with such prestigious dot-coms as America Online, MyPoints.com and also locally, for the Schaumburg Park District. John received his Bachelor of Science Degree from Bradley University in Peoria, Illinois. His hobbies include golfing, biking and John is a member of the Chicago Curling Club.</p>
-        <p>
-        Aaron Broderick<br />
-        Web Designer<br />
-        847.252.1620 | <a href="mailto:ABroderick@linkstechnology.com">email</a></p>
-        <p>Aaron came to links in November of 2013.  He specializes in graphic and web design, as well as front-end development.  Before joining links, he worked with clients in the medical field to build their web presences.  He possesses a B.F.A. in Web Design and Interactive Media from the Illinois Institute of Art &ndash; Schaumburg, as well as a B.S. in Psychology from Northland College, Ashland WI.  Aaron has an array of experience spanning 14 years across different fields, giving him a unique perspective of what clients will need for their websites.  Hobbies include music, art, and gaming.  </p>
-        <p>
-        <img alt="" src="/images/bio/Nyquist, Tim.jpg" style="border: 0px none;" /><br />
-        Tim Nyquist<br />
-        Senior Web &amp; Graphic Designer<br />
-        847.252.1610 | <a href="mailto:tnyquist@linkstechnology.com">email</a></p>
-        <p>
-        Tim provides the creative vision behind many of our most successful design projects. Since receiving his Bachelor of Arts in Graphic Design &amp; Communication from Valparaiso University, Tim has been designing web and print projects for over a decade. He stayed at Valpo another four years to design all marketing materials, print collateral and website for the University's Office of Admissions. A Detroit sports fan, Tim loves to watch and play most sports; particularly basketball and golf. Other interests include music, social media, and his dog, Fia.</p>
-        <p>
-        <img alt="" src="/images/bio/Palmer, Beth.jpg" style="border: 0px none;" /><br />
-        Beth Palmer<br />
-        Print &amp; Web Designer<br />
-        847.252.1620 | <a href="mailto:bpalmer@linkstechnology.com">email</a></p>
-        <p>
-        Beth specializes in client website support and email marketing at Links. She updates websites, creates and manages email marketing campaigns and coordinates training sessions. Beth has a Bachelor of Arts Degree in Criminal Justice and Interdisciplinary Studies from Iowa State University. She has worked for The Center for Creative Justice where Beth was in charge of finding people who fled probation. She is an avid runner and loves working out. Beth also enjoys seasonal sports such as snowboarding in the winter and boating in the summer.</p>
-        <p>
-        <img alt="" src="/images/bio/Shatzer, Brice.jpg" style="border: 0px none;" /><br />
-        Brice Shatzer<br />
-        Web Designer<br />
-        847-252-1614 | <a href="mailto:bshatzer@linkstechnology.com">email</a></p>
-        <p>
-        Brice came to Links in 2012 and specializes in graphic design and front-end development--helping clients take sites from concept to functional. Shortly before joining the company, he earned his Bachelor of Arts Degree in Communication at Carthage College in Kenosha, WI. While attending Carthage, Brice had the opportunity to be involved with a diverse array of academic and professional projects ranging from audio/video production and community management, to event planning and technical support; and everything in-between. Hobbies include playing various sports, as well as, coaching youth soccer.
-        </p>
-        <h2>Application Development</h2>
-        <p><img alt="" src="/images/bio/Kravis, Gary.jpg" style="border: 0px none;" /><br />
-        Gary Kravis<br />
-        Director of Software Solutions<br />
-        847.252.7288 | <a href="mailto:gkravis@linkstechnology.com">email</a></p>
-        <p>
-        Gary is the Director of Software Solutions and TariffShark Product Manager for Links Technology. A large portion of his experience lies in tariff document filing and management and the software requirements for that arena. After graduating from the University of Illinois with a Bachelor of Science Degree in Computer Science and Business, Gary has spent much of his career in the IT industry developing software for U.S. energy companies. Gary has a strong commitment to the delivery of projects on time&hellip;priding himself on jobs done right the first time and on-budget. His hobbies include golf, poker, movies and "safe computing".</p>
-        <p>
-        <img alt="" src="/images/bio/Klein, John.jpg" style="border: 0px none;" /><br />
-        John Klein<br />
-        Project Manager<br />
-        847.252.7281 | <a href="mailto:jklein@linkstechnology.com">email</a></p>
-        <p>
-        John has been with Links Technology for over 12 years working with large firms such as Cisco Systems and CVS/Caremark, as well as many organizations in the local community. He offers a diverse background focusing on software development in the analysis &amp; design, project management and quality assurance areas. John received his undergraduate degree from the University of Florida and holds a Master Degree in Business Administration (MBA) from Auburn University with a specialization in Management Information Systems. John enjoys golfing, swimming and spending time with his family.</p>
-        <p>
-        <img alt="" src="/images/bio/Colecchia Paul.jpg" style="border: 0px none;" /><br />
-        Paul Colecchia<br />
-        Software Developer<br />
-        847.252.1613 | email</p>
-        <p>
-        With over a decade of experience in .Net application development, Links welcomed Paul as a software developer in 2013. Prior to joining the Links team, he created and maintained websites and windows applications for large multinational corporations using .Net Framework, C#, VB, ASP.NET, MVC, WinForms, WCF and SQL -- acquiring a very impressive computer skill set. Paul earned his Bachelor of Science Degree in Applied Computer Science from Northern Illinois University.When not in the office, Paul enjoys socializing with family and friends.</p>
-        <p>
-        <img alt="" src="/images/bio/Lutz, Joe.jpg" style="border: 0px none;" /><br />
-        Joe Lutz<br />
-        Software Developer<br />
-        847.252.1616 | <a href="mailto:jlutz@linkstechnology.com">email</a></p>
-        <p>
-        Joe started with Links Technology in 2008 and has more than seven years-experience in the IT field. Prior to joining Links, Joe was a Software Developer and IT Manager where he wrote custom drafting software, blueprinting software and maintained the IT infrastructure.&nbsp; He earned his Associate Degree in Computer Science with software development as his area of expertise. Joe specializes in ASP.Net, MVC, and C#.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Rios, Sean.jpg" /><br />
-        Sean Rios<br />
-        Software Developer<br />
-        847.252.1615 | <a href="mailto:srios@linkstechnology.com">email</a></p>
-        <p>
-        Sean is a Software Developer for Links and brings over a decade of IT experience to the company. An expert in website development, Sean has honed his development and design skills with past companies such as Volition (THQ) and Legacy.com. He holds a degree from the University of Illinois in Computer Science. In addition to watching sports, Sean loves to travel.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Stoev, Pavel.jpg" /><br />
-        Pavel Stoev<br />
-        Senior Solutions Developer<br />
-        847.252.7262 | <a href="mailto:pstoev@linkstechnology.com">email</a></p>
-        <p>
-        Pavel has worked with computers for more than 20 years and has over 15 years of experience with custom commercial software development ranging from simple utilities to highly scalable web and desktop applications. Over the past few years he has been heavily involved with popular Microsoft technologies such as the SQL Server, .NET Framework and ASP.NET. Pavel has worked in many different roles as a programmer, architect, project manager and consultant in a wide range of areas including databases, virtualization and cloud platforms, cryptography, server architecture and distributed systems. More recently he has been working with SQL Server 2012, Entity Framework and the new features offered by Microsoft .NET Framework 4.5 - exciting new products which aim to simplify the creation of complex data-driven web sites and desktop applications. When he's not developing software solutions or engaging in conversations about software technology, Pavel is a licensed pilot, food connoisseur, photographer and soccer player.</p>
-        <h2>Admin</h2>
-        <p><img alt="" style="border: 0px none;" src="/images/bio/Errera, Patty.jpg" /><br />
-        Patty Errera<br />
-        Office Manager<br />
-        847.252.7289 | <a href="mailto:perrera@linkstechnology.com">email</a></p>
-        <p>
-        Patty is Office Manager at Links Technology and has been a member of the Links&rsquo; team for over ten years. She not only handles payroll and a variety of other accounting duties; but oversees HR responsibilities including employee insurance and new hire/consultant support and documentation.</p>
-        <p>
-        Patty is a veteran of the finance world with over 30 years of experience. Her career history includes working for the City of Chicago and the Chicago Board of Education. She enjoys gardening and donating her time to many different charitable organizations throughout her community.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Nystrom, Mary.jpg" /><br />
-        Mary Nystrom<br />
-        Administration<br />
-        847.252.1610 | <a href="mailto:mnystrom@linkstechnology.com">email</a></p>
-        <p>
-        At Links Technology, Mary assists with a plethora of jobs from HR duties and assisting with accounts receivables/payables with a main focus on Links TariffShark accounts; to organizing special events. Prior to joining the Links family, Mary had been working in various administrative assisting positions for 16 years in Ohio and Illinois ranging from a hospital radiology department, special education administrative assistant for Ohio public schools and in the U-46 school district here in Illinois. She enjoys spending time with her family, gardening and home decorating projects.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Piper, Mary Kay.jpg" /><br />
-        Mary Kay Piper<br />
-        Administration<br />
-        877.252,1612 | <a href="mailto:MPiper@linkstechnology.com">email</a></p>
-        <p>
-        Mary Kay joined Links in 2013 and is responsible for a range of duties including employee insurance and new hire/consultant support and documentation and invoicing of various customers. She also contributes to miscellaneous writing projects that pop up in the office. Her diverse background ranges in graphic arts, business management, and sales and training; and she has worked for several full-production art studios as art director, typography manager, and project manager. In the graphic arts capacity, she serviced clients such as Wrigley, Blue Cross Blue Shield and R. J. Donnelly. In the sales arena, she served as Sales Manager/Trainer for several corporate offices&mdash;most prominently, The Pampered Chef, Ltd. where she designed, authored and implemented company publications, as well as presented training workshops, on stage presentations at conferences; and planned/presented regional field training visits across the country. Mary Kay holds a Bachelor of Arts Degree in Graphic Arts from Western Illinois University and is a Certified Franklin Covey Instructor and licensed in Health and Life Insurance. Hobbies include watercolor painting, sketching and golfing.</p>
-        <h2>IT Staffing</h2>
-        <p><img alt="" style="border: 0px none;" src="/images/bio/Hart, Tim.jpg" /><br />
-        Tim Hart<br />
-        VP of Professional Services<br />
-        Eastern Region<br />
-        919.645.5785 | <a href="mailto:tkretz@linkstechnology.com">email</a></p>
-        <p>
-        Tim manages the Eastern Region for Links and oversees Managed Services and contractual fulfillments for IT clients. With 25 years of experience in the Network and IT fields, Tim&rsquo;s expertise draws from his work with industry leaders such as Sprint, NCR, Unisys and Lucent, and he has led engagements throughout the US, Canada, Europe, South America and Southeast Asia. </p>
-        <p>
-        In a consultancy role, his work in network operations, software and hardware development, data warehousing and market forecasting allowed him to establish reselling and partnership arrangements with companies like Brio, Redbrick, Oracle and Informix. His efforts to identify churn risks, increase market penetration and maximize customer return on investment led to the adoption of decision-support applications by GTE, Bell Atlantic, Pacific Bell, British Columbia Telecom and Unitel. Prior to joining Links, he consulted with Bank of America to develop, test and launch their Real Estate Banking Portal.</p>
-        <p>
-        Tim is a graduate of Purdue University, where he earned a BS in Electrical Engineering. He also holds an MBA with a concentration in Finance from the University of Missouri. He currently resides in Raleigh, North Carolina, near the renowned Research Triangle Park. He lives with his wife and three children and enjoys fly-fishing and cheering on his beloved Cubs, Bears and Boilermakers. When he&rsquo;s not helping with math homework, Tim indulges his keen interest in United States history by reading favorite authors Doris Kearns Goodwin, David McCullough and Stephen E. Ambrose, among others.</p>
-        <p>
-        Tim has been with Links since February, 2002, and was recently named Vice President of Professional Services for the Eastern Region.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Kretz, Tom.jpg" /><br />
-        Thomas Kretz<br />
-        VP of Professional Services<br />
-        Western Region<br />
-        847.252.1978 | <a href="mailto:thart@linkstechnology.com">email</a></p>
-        <p>
-        Tom manages the Western Region for Links and is responsible for all of our IT staffing clients and consultants in the Western US. He is a 10-year Links veteran who began his career with us managing client projects. A former US Army Captain, Tom began his IT career in 1994 managing troop deployments with DoD computer systems. He then became a project / program manager during the dot-com boom and obtained a wealth of IT experience in multiple industries before joining Links in 2001. His exuberant talent to drive and staff projects quickly led him to our management ranks.</p>
-        <p>
-        Tom lives in San Francisco and manages our Silicon Valley offices where the beautiful weather allows him to be an avid runner, soccer player, and has encouraged him to pick up Links&rsquo; favorite past time, golf.</p>
-        <p>
-        <img alt="" style="border: 0px none;" src="/images/bio/Easterday, Debi.jpg" /><br />
-        Debi Easterday<br />
-        Director of Recruiting Services<br />
-        419.420.3782 | <a href="mailto:dbulkowski@linkstechnology.com">email</a></p>
-        <p>
-        Debi is an IT Recruiter for Links Technology and sources niche-specific technology positions and screening candidates for our clients. She has 12 years of experience and has a Bachelors Degree in Interdisciplinary Studies. Debi has many hobbies such as playing guitar, singing, but has the most fun spending quality time with her children. </p>
-        <p>
-        Favorite website: <a href="http://www.Monster.com">www.Monster.com</a></p>
-        <p>
-        Dennis Fiala<br />
-        IT Recruiter<br />
-        847.252.1976| <a href="mailto:DFiala@linkstechnology.com">email</a></p>
-        <p>
-        Dennis is a native of Illinois and currently resides in Arizona. He has a strong background of thirteen years working as an IT Recruiter. He has extensive experience in full life cycle recruiting and sound knowledge of past and current technologies. In addition, Dennis is very personable and enjoys working with others.&nbsp; He takes pride in maintaining relationships with past, present and future consultants. Outside of work Dennis enjoys life with his wife and three boys. </p>
-        <p>
-        </p>
-        <p>Smriti Singh<br />
-        Recruiter<br />
-        847.252.1609 | <a href="mailto:SSingh@linkstechnology.com">email</a></p>
-        <p>Smriti is an IT Recruiter for Links Technology and specializes in bringing talent and technolgy together. Smriti is a Masters in Computer Science and started her career as a Software Developer with Amdocs.  She loves playing basketball and cooking for her family and friends.&rdquo;</p>
-        <img alt="" style="border: 0px none;" src="/images/bio/McLeod, Joane .jpg" /><br />
-        Joane McLeod<br />
-        Business Anaylst<br />
-        847.252.2050 | <a href="mailto:JMcLeod@linkstechnology.com">email</a>
-        <p>
-        Joane McLeod joined the Links family as a Business Analyst in November of 2013 and bringing over 12 years of operations consulting experience from Big Six firm.&nbsp; Joane has performed dozens of IT and Software Evaluations, Selection and Implementation Oversight projects.&nbsp; She partnered with clients to facilitate Business Process Improvement Reviews involving BPI training, re-design and process change implementation.&nbsp; Previous employment included the administration of the newly-formed IDOT Center of Excellence to bring BPI methodologies to the State of Illinois. Joane also worked with an environmental and food safety consulting firm to perform FSSC 22000, BRC, SQF, and IFS audit preparation consulting, including Process mapping, Internal Audit standards, HACCP plans and documentation to meet the latest GFSI requirements and also assisted with Gap Analysis reviews for OSHA standards and for security.</p>
-        <p>
-        Joane has her Bachelor of Science degree from Montana State University-Bozeman. She believes strongly in public service and serves on the Board of Directors for the Children&rsquo;s Advocacy Center as well as several other village and political committees. She achieved Gold Level Certification as a Girl Scout.&nbsp; Spending time with her large family provides her greatest satisfaction, and she often finds herself cooking dinners for 20 or more.</p>
-<!-- div hiding raw data to create a clean workspace -->
-</div>
-<!-- -->   
-
-    </body>
+</body>
 </html>
