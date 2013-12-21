@@ -633,53 +633,28 @@ window.onload = function() {
 
     $('div.headshot img')
         .click( function() {
-            var $thisHeadshot = $(this).closest('div.headshot');
-            var headshotStatus = $thisHeadshot.hasClass('active');
             var $headshotActive = $('div.headshot.active');
-            function storyCatcher (clicked) {
-                    console.log('timeout fired');
-                    console.log( clicked.attr('class') );
-                    if( clicked.closest('div.headshot').hasClass('active') && clicked.siblings('div.story').is(':hidden') ) {
-                        $thisHeadshot.trigger('readyForStory');
-                        console.log('readyForStory');
-                        }
+
+            var clickedHeadshot = {
+                obj: $(this).closest('div.headshot'),
+                active: $(this).closest('div.headshot').hasClass('active'),
+                story: $(this).siblings('div.story'),
+                showStory: function() { clickedHeadshot.story.show();console.log('showStory fired')}
             }
-//                };
-//*/
-          //  $.Callbacks().add('storyCatcher').delay(1000).fire( $(this) );
+            
+            function storyCatcher (clicked) {
+                    if( clicked.active && clicked.story.is(':hidden') ) {
+                        clicked.showStory();
+                    }
+            }
 
-
-
-
-            $thisHeadshot.on('readyForStory', function(){
-                $(this).find('div.story').show();
-                console.log('readyForStory function activated');
-            });
-
-
-//show story on bio transition to complete
-            $thisHeadshot.on('webkitTransitionEnd otransitionend oTransitionEnd mstransitionend transitionend', function(e) {
-/*
-                        console.log(e);
-                        console.log('---');
-                        console.log(e.originalEvent);
-                        console.log('---'); 
-                        console.log(e.originalEvent.propertyName);
-                        console.log('>>>>>>') */
+//show story content when container's css transition is complete
+            clickedHeadshot.obj.on('webkitTransitionEnd otransitionend oTransitionEnd mstransitionend transitionend', function(e) {
                 if (e.originalEvent.propertyName === "max-width" && $(this).hasClass('active') ) {
-                   // console.log(e);
-                    $thisHeadshot.trigger('readyForStory');console.log('readyForStory');
+                    clickedHeadshot.showStory();
+                    console.log('readyForStory');
                 };
             });
-            //debugger
-
-/*
-            debugger 
-            var joo = $('div.headshot.active').find('div.story').text();
-            console.log(joo);
-            //$('div.headshot.active div.story').hide();
-            $('div.story:visible').hide();
-            //.fadeOut(200);*/                    
 
 //----- hide currently active bio -----
             $headshotActive.find('div.story').hide();
@@ -696,27 +671,17 @@ window.onload = function() {
 //----- ----- 
 
 //----- make clicked bio active -----            
-            if ( headshotStatus === false ){
-                $thisHeadshot.addClass('active');
-                $thisHeadshot.closest('div.staffBio').attr('class', 'col-xs-12 staffBio');
-                //****$thisHeadshot.trigger('readyForStory')   
+            if ( clickedHeadshot.active === false ){
+                clickedHeadshot.obj.addClass('active');
+                clickedHeadshot.obj.closest('div.staffBio').attr('class', 'col-xs-12 staffBio');
+                clickedHeadshot.active = clickedHeadshot.obj.hasClass('active');
             }
 //----- -----
-//debugger
+
 //----- trigger readyForStory for older browsers not supporting CSS transitions
-//console.log($(this).closest('div.headshot').hasClass('active'));
-//console.log($(this).siblings('div.story').is(':hidden') );
-$(this).delay(800).queue( function(){
-  storyCatcher( $(this) )
+clickedHeadshot.obj.delay(515).queue( function(){
+  storyCatcher( clickedHeadshot )
 });
-
-//globalEval( storyCatcher( $(this) ) );
-//debugger
-
-
-
-
-
 //----- -----
     });
 
