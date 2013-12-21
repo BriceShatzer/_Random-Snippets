@@ -636,7 +636,27 @@ window.onload = function() {
             var $thisHeadshot = $(this).closest('div.headshot');
             var headshotStatus = $thisHeadshot.hasClass('active');
             var $headshotActive = $('div.headshot.active');
-            
+            function storyCatcher (clicked) {
+                    console.log('timeout fired');
+                    console.log( clicked.attr('class') );
+                    if( clicked.closest('div.headshot').hasClass('active') && clicked.siblings('div.story').is(':hidden') ) {
+                        $thisHeadshot.trigger('readyForStory');
+                        console.log('readyForStory');
+                        }
+            }
+//                };
+//*/
+          //  $.Callbacks().add('storyCatcher').delay(1000).fire( $(this) );
+
+
+
+
+            $thisHeadshot.on('readyForStory', function(){
+                $(this).find('div.story').show();
+                console.log('readyForStory function activated');
+            });
+
+
 //show story on bio transition to complete
             $thisHeadshot.on('webkitTransitionEnd otransitionend oTransitionEnd mstransitionend transitionend', function(e) {
 /*
@@ -648,7 +668,7 @@ window.onload = function() {
                         console.log('>>>>>>') */
                 if (e.originalEvent.propertyName === "max-width" && $(this).hasClass('active') ) {
                    // console.log(e);
-                    $thisHeadshot.find('div.story').delay(200).show();
+                    $thisHeadshot.trigger('readyForStory');console.log('readyForStory');
                 };
             });
             //debugger
@@ -663,21 +683,15 @@ window.onload = function() {
 
 //----- hide currently active bio -----
             $headshotActive.find('div.story').hide();
+            $headshotActive.removeClass('active');
 
             if ( $headshotActive.closest('#management').length === 1 )  {
-            //  console.log('closing headshot in management');
-                $headshotActive 
-                    .removeClass('active')
-                    .closest('.staffBio')
-                    .attr('class', 'col-sm-4 col-xs-6 staffBio');
+                $headshotActive
+                    .closest('.staffBio').attr('class', 'col-sm-4 col-xs-6 staffBio');
             }
-
             else {
-          //    console.log('closing headshot 4 wide');
                 $headshotActive 
-                    .removeClass('active')
-                    .closest('.staffBio')
-                    .attr('class', 'col-sm-3 col-xs-6 staffBio');
+                    .closest('.staffBio').attr('class', 'col-sm-3 col-xs-6 staffBio');
             }
 //----- ----- 
 
@@ -685,13 +699,26 @@ window.onload = function() {
             if ( headshotStatus === false ){
                 $thisHeadshot.addClass('active');
                 $thisHeadshot.closest('div.staffBio').attr('class', 'col-xs-12 staffBio');
+                //****$thisHeadshot.trigger('readyForStory')   
             }
+//----- -----
+//debugger
+//----- trigger readyForStory for older browsers not supporting CSS transitions
+//console.log($(this).closest('div.headshot').hasClass('active'));
+//console.log($(this).siblings('div.story').is(':hidden') );
+$(this).delay(800).queue( function(){
+  storyCatcher( $(this) )
+});
+
+//globalEval( storyCatcher( $(this) ) );
+//debugger
+
+
+
+
 
 //----- -----
-            if ( )
-
-    }).delay(200).
-;
+    });
 
 };
 </script>
