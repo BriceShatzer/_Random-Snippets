@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Test</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+<form id="thing">
+    <input type="text" id="text" placeholder="Enter some text" />
+    
+    <select id="selectionSpot" multiple>
+    	<option value="11111">11111</option>
+    	<option value="22222">22222</option>
+    	<option value="33333">33333</option>
+    	<option value="44444">44444</option>
+    </select>
+
+    <input type="checkbox" id="checkboxSpot_1" value="c1" />
+    <input type="checkbox" id="checkboxSpot_2" value="c2" />
+    <input type="checkbox" id="checkboxSpot_3" value="c3" />
+    <input type="checkbox" id="checkboxSpot_4" value="c4" />
+
+    <input type="submit" value="Send message" />
+
+  </fieldset>
+</form>
+<div id="results"></div>
+    <script type="text/javascript">
+    function showValues() {
+      var str = $('#thing').serialize();
+      $("#results").text( str );
+    }
+    
+</script>
+
+</body>
+</html>
+
+
